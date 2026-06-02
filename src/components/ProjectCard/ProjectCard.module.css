@@ -1,0 +1,128 @@
+.card {
+  /* Thumbnail image controls — tweak these to taste */
+  --card-img-height: 90%;          /* image height within the card */
+  --card-img-align: top;        /* vertical position: flex-start | center | flex-end */
+
+  /* Gradient scrim (sits above image, below text + arrow).
+     Light theme default below; dark theme overrides it in the rule beneath. */
+  --card-scrim-start: 1%;         /* where the fade begins (lower % = starts higher) */
+  --card-scrim-color: rgba(255, 255, 255, 1);  /* colour it fades to at the bottom */
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  background: var(--bg-elevated);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+:global([data-theme="dark"]) .card {
+  border-color: var(--border-subtle);
+  --card-scrim-color: rgba(0, 0, 0, 0.95);
+}
+
+.card:hover {
+  border-color: var(--border);
+}
+
+/* Full-bleed background image.
+   Defaults below; override per-project from content.js via the `thumbnailStyle`
+   object (applied inline to the <img>), which beats these and supports
+   height / width / objectFit / objectPosition / transform / margin, plus
+   per-theme { dark: {...}, light: {...} }. */
+.bg {
+  position: absolute;
+  inset: -32px -1px 0;
+  pointer-events: none;
+  display: flex;
+  align-items: var(--card-img-align, center);
+  justify-content: center;
+  overflow: hidden;
+}
+
+.bg img {
+  width: 100%;
+  height: var(--card-img-height, 100%);
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.bgPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-elevated);
+  transition: background var(--transition);
+}
+
+/* Gradient scrim — above the image, below the text + arrow */
+.gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) var(--card-scrim-start), var(--card-scrim-color) 100%);
+  pointer-events: none;
+}
+
+/* Text content overlaid on gradient */
+.meta {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.category {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.013em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.5;
+  letter-spacing: -0.016em;
+}
+
+.arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  flex-shrink: 0;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.card:hover .arrow {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme="dark"]) .card:hover .arrow {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 767px) {
+  .card { padding: 16px; }
+}

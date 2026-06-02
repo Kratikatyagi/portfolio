@@ -1,0 +1,189 @@
+/* ════════════════════════════════
+   DESKTOP / TABLET  (≥ 768px)
+   ════════════════════════════════ */
+
+.viewport {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  padding: clamp(8px, 2vw, 24px) clamp(12px, 6vw, 100px);
+  transition: background var(--transition);
+}
+
+.frame {
+  width: 100%;
+  max-width: 1600px;
+  height: 100%;
+  border-radius: var(--radius-xl);
+  border: 12px solid var(--frame-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  background: var(--bg);
+  padding: 20px;
+  transition: border-color var(--transition), background var(--transition);
+  transform: translateZ(0);
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 28px 0;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--bg-card);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.navGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0 8px;
+}
+
+.themeGroup {
+  padding: 0 8px;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0 8px 12px;
+  transition: background var(--transition);
+}
+
+/* ── Nav items (sidebar) ── */
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+  color: var(--text-nav-inactive);
+  text-decoration: none;
+  transition: color var(--transition);
+  width: 100%;
+  font-family: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-radius: 12px;
+}
+
+.navItem:hover  { color: var(--text-nav-active); }
+.navItem.active { color: var(--text-nav-active); }
+
+.navIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.navLabel {
+  font-size: 11px;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+/* ── Scrollable content pane ── */
+.content {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--bg);
+  border-radius: 20px;
+  padding-left: 16px;
+  transition: background var(--transition);
+}
+
+/* Mobile nav hidden on desktop */
+.mobileNav { display: none; }
+
+
+/* ════════════════════════════════
+   MOBILE  (< 768px)
+   ════════════════════════════════ */
+@media (max-width: 767px) {
+
+  /* Remove the windowed frame — go full screen */
+  .viewport {
+    padding: 0;
+    height: 100dvh;
+    align-items: stretch;
+  }
+
+  .frame {
+    border-radius: 0;
+    border: none;
+    max-width: 100%;
+    flex-direction: column;
+    height: 100dvh;
+    padding: 0;
+    gap: 0;
+  }
+
+  /* Hide desktop sidebar */
+  .sidebar { display: none; }
+
+  /* Content fills remaining height above bottom nav */
+  .content {
+    flex: 1;
+    min-height: 0;
+    height: auto;
+    border-radius: 0;
+    padding: 8px;
+  }
+
+  /* ── Bottom navigation bar ── */
+  .mobileNav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-shrink: 0;
+    height: 64px;
+      border-top: 1px solid var(--border);
+    padding: 0 8px;
+    padding-bottom: env(safe-area-inset-bottom);
+    transition: background var(--transition), border-color var(--transition);
+  }
+
+  .mobileNavItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 6px 12px;
+    color: var(--text-nav-inactive);
+    text-decoration: none;
+    transition: color var(--transition);
+    font-family: inherit;
+    cursor: pointer;
+    background: none;
+    border: none;
+    flex: 1;
+  }
+
+  .mobileNavItem:hover  { color: var(--text-nav-active); }
+  .mobileNavItem.active { color: var(--text-nav-active); }
+
+  .mobileNavLabel {
+    font-size: 10px;
+    font-weight: 400;
+    text-align: center;
+  }
+}

@@ -1,0 +1,120 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Theme tokens ── */
+:root {
+  /* Light theme — exact values from Figma/Framer */
+  --bg: #f8f8f8;
+  --bg-card: #ffffff;
+  --bg-elevated: #f9f8f9;
+  --border: rgba(0, 0, 0, 0.1);
+  --border-subtle: rgba(0, 0, 0, 0.05);
+  --border-badge: #ecebec;
+  --text-primary: #08090a;
+  --text-secondary: #616161;
+  --text-nav-active: #1c1c1f;
+  --text-nav-inactive: #454646;
+  --text-muted: #616161;
+  --accent: #08090a;
+  --accent-text: #f7f8f8;
+  --accent-border: #3e3e44;
+  --badge-bg: #f9f8f9;
+  --badge-border: #ecebec;
+  --badge-text: #08090a;
+  --social-btn-bg: #1c1c1f;
+  --social-btn-color: #ffffff;
+  --resume-btn-bg: #ffffff;
+  --resume-btn-border: #e6e6e6;
+  --resume-btn-text: #08090a;
+  --contact-btn-bg: #08090a;
+  --dot-work: #A000C8;
+  --dot-edu: #d4b144;
+  --dot-selected: #8b5cf6;
+  --dot-purple-soft: #C040E8;
+  --dot-green: #78e576;
+  --frame-border: #ffffff;
+  --avatar-bg: #F8F8F8;
+  --sidebar-width: 88px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 40px;
+  --transition: 0.2s ease;
+}
+
+[data-theme="dark"] {
+  /* Dark theme — exact values from Figma/Framer */
+  --bg: #08090a;
+  --bg-card: transparent;
+  --bg-elevated: #1c1c1f;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-badge: transparent;
+  --text-primary: #f7f8f8;
+  --text-secondary: #8a8f98;
+  --text-nav-active: #f7f8f8;
+  --text-nav-inactive: #a7a8a8;
+  --text-muted: #8a8f98;
+  --accent: #28282c;
+  --accent-text: #f7f8f8;
+  --accent-border: #3e3e44;
+  --badge-bg: #1c1c1f;
+  --badge-border: transparent;
+  --badge-text: #f7f8f8;
+  --social-btn-bg: #f7f8f8;
+  --social-btn-color: #08090a;
+  --resume-btn-bg: #e6e6e6;
+  --resume-btn-border: #e6e6e6;
+  --resume-btn-text: #08090a;
+  --contact-btn-bg: #28282c;
+  --dot-work: #A000C8;
+  --dot-edu: #d4b144;
+  --dot-selected: #8b5cf6;
+  --dot-purple-soft: #C040E8;
+  --dot-green: #78e576;
+  --frame-border: #1c1c1f;
+  --avatar-bg: #1C1B1F;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  background: var(--bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  transition: background var(--transition), color var(--transition);
+}
+
+#root {
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ── Scrollbar (hidden) ── */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
