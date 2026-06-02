@@ -905,8 +905,8 @@
 .eventName {
   font-family: monospace;
   font-size: 12px;
-  color: var(--dot-work);
-  background: rgba(160, 0, 200, 0.07);
+  color: var(--dot-purple-soft);
+  background: rgba(160, 0, 200, 0.08);
   padding: 2px 6px;
   border-radius: 4px;
   white-space: nowrap;
@@ -1012,10 +1012,11 @@
    MOBILE  (< 768px)
    ════════════════════════════════ */
 @media (max-width: 767px) {
-  .backBtn { margin: 20px 16px 0; }
-  .hero { padding: 20px 16px 0; }
+  .page { padding: 12px; }
+  .backBtn { margin: 12px 0 8px; }
+  .hero { padding: 8px 0 0; }
   .heroTitle { font-size: 26px; }
-  .body { padding: 40px 16px 0; }
+  .body { padding: 24px 0 0; }
   .metricsGrid { grid-template-columns: repeat(2, 1fr); }
   .principlesGrid { grid-template-columns: 1fr; }
   .headlineMetrics { grid-template-columns: repeat(2, 1fr); }
