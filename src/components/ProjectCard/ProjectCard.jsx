@@ -1,10 +1,14 @@
+import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTheme } from '../../context/ThemeContext'
 import styles from './ProjectCard.module.css'
 
-export default function ProjectCard({ slug, title, tagline, category, thumbnail, thumbnailStyle, className, bgClassName, leftClassName }) {
+export default function ProjectCard({ slug, title, tagline, category, thumbnail, thumbnailStyle, className, bgClassName, leftClassName, readTime, readTimeGradient }) {
   const navigate = useNavigate()
   const { theme } = useTheme()
+  const cardRef = useRef(null)
+  const [pos, setPos] = useState({ x: 0, y: 0 })
+  const [hovered, setHovered] = useState(false)
 
   const thumbnailSrc = thumbnail && typeof thumbnail === 'object'
     ? (theme === 'dark' ? thumbnail.dark : thumbnail.light)
@@ -16,8 +20,21 @@ export default function ProjectCard({ slug, title, tagline, category, thumbnail,
     : undefined
   if (resolvedStyle) { delete resolvedStyle.dark; delete resolvedStyle.light }
 
+  const handleMouseMove = (e) => {
+    const rect = cardRef.current.getBoundingClientRect()
+    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+  }
+
   return (
-    <div className={[styles.card, className].filter(Boolean).join(' ')} onClick={() => navigate(`/work/${slug}`)}>
+    <div
+      ref={cardRef}
+      className={[styles.card, className].filter(Boolean).join(' ')}
+      onClick={() => navigate(`/work/${slug}`)}
+      onMouseMove={readTime ? handleMouseMove : undefined}
+      onMouseEnter={readTime ? () => setHovered(true) : undefined}
+      onMouseLeave={readTime ? () => setHovered(false) : undefined}
+      style={readTime ? { cursor: 'pointer' } : undefined}
+    >
       <div className={[styles.bg, bgClassName].filter(Boolean).join(' ')}>
         {thumbnailSrc
           ? <img src={thumbnailSrc} alt={title} style={resolvedStyle} />
@@ -34,6 +51,14 @@ export default function ProjectCard({ slug, title, tagline, category, thumbnail,
           <ArrowIcon />
         </button>
       </div>
+      {readTime && (
+        <div
+          className={[styles.cursorPill, hovered ? styles.cursorPillVisible : ''].join(' ')}
+          style={{ '--cx': `${pos.x}px`, '--cy': `${pos.y}px`, '--pill-bg': readTimeGradient || 'linear-gradient(180deg, #6E5DF6, #C68DF6)' }}
+        >
+          {readTime} Read
+        </div>
+      )}
     </div>
   )
 }

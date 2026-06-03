@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
+import ProjectCard from '../../components/ProjectCard/ProjectCard'
 import { useTheme } from '../../context/ThemeContext'
 import { projects } from '../../data/content'
 import styles from './CaseStudy.module.css'
@@ -10,6 +11,13 @@ export default function CaseStudy() {
   const navigate = useNavigate()
   const { theme } = useTheme()
   const project = projects.find(p => p.slug === slug)
+  const currentIndex = projects.findIndex(p => p.slug === slug)
+  const nextProject = projects[(currentIndex + 1) % projects.length]
+
+  useEffect(() => {
+    const main = document.querySelector('main')
+    if (main) main.scrollTop = 0
+  }, [slug])
 
   if (!project) {
     return (
@@ -27,7 +35,7 @@ export default function CaseStudy() {
       {project.sections.length > 0 && (
         <SectionNav sections={project.sections} />
       )}
-      <div className={styles.page}>
+      <div className={styles.page} data-slug={slug}>
       {/* ── Back nav ── */}
       <button onClick={() => navigate('/work')} className={styles.backBtn}>
         <ArrowLeftIcon /> Back to Work
@@ -375,7 +383,15 @@ export default function CaseStudy() {
       )}
       </div>
 
-      <Footer />
+      <div className={styles.bottomRow}>
+        <Footer />
+        {nextProject && projects.length > 1 && (
+          <div className={styles.nextCardWrap}>
+            <ProjectCard {...nextProject} className={styles.nextCard} />
+            <span className={styles.nextLabel}>See Next</span>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

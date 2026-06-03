@@ -1501,3 +1501,95 @@
 @media (min-width: 768px) and (max-width: 1100px) {
   .headlineMetrics { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ── Bottom row: footer + next card side by side ── */
+.bottomRow {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  padding: 0;
+}
+
+.bottomRow > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.nextCardWrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.nextCard {
+  width: 100%;
+  height: 100%;
+}
+
+.nextLabel {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  z-index: 2;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .bottomRow {
+    flex-direction: column;
+  }
+
+  .nextCardWrap {
+    height: 220px;
+  }
+
+  .nextCard {
+    height: 220px;
+  }
+}
+
+/* ── Pre-Purchase accent override: replace purple (#a000cb) with teal (#02B8CC) ── */
+.page[data-slug="pre-purchase-experience"] .headlineMetricValue {
+  color: rgb(2, 184, 204);
+}
+.page[data-slug="pre-purchase-experience"] .variantShipped {
+  background-color: rgba(2, 184, 204, 0.05);
+  border-color: rgba(2, 184, 204, 1);
+  box-shadow: 0 0 0 1px rgba(2, 184, 204, 1);
+}
+.page[data-slug="pre-purchase-experience"] .variantBadge {
+  background: rgba(2, 184, 204, 1);
+}
+.page[data-slug="pre-purchase-experience"] .reflection {
+  border-left-color: #02B8CC;
+}
+.page[data-slug="pre-purchase-experience"] .funnelFill {
+  background: linear-gradient(90deg, rgba(2, 184, 204, 0.8), rgba(2, 184, 204, 0.4));
+}
+.page[data-slug="pre-purchase-experience"] .eventName {
+  color: rgb(2, 184, 204);
+  background: rgba(2, 184, 204, 0.08);
+}
+.page[data-slug="pre-purchase-experience"] .feedbackBtn {
+  background: rgba(2, 184, 204, 0.2);
+  border-color: rgba(2, 184, 204, 1);
+  color: rgba(2, 184, 204, 1);
+}
+.page[data-slug="pre-purchase-experience"] .feedbackBtn:hover {
+  background: rgba(2, 184, 204, 0.35);
+}
+.page[data-slug="pre-purchase-experience"] .callout::before {
+  background: rgba(2, 184, 204, 0.8);
+}
+.page[data-slug="pre-purchase-experience"] .annotationLaw {
+  color: rgba(2, 184, 204, 1);
+}
+.page[data-slug="pre-purchase-experience"] .diagramOutput {
+  color: rgb(2, 184, 204);
+  background: rgba(2, 184, 204, 0.08);
+}

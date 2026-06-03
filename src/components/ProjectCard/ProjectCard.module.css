@@ -123,6 +123,34 @@
   background: rgba(255, 255, 255, 0.2);
 }
 
+.cursorPill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10;
+  transform: translate(calc(var(--cx, 0px) - 10%), calc(var(--cy, 0px) + 24px));
+  transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.15s ease;
+  opacity: 0;
+  background: var(--pill-bg, linear-gradient(180deg, #6E5DF6, #C68DF6));
+  color: #fff;
+  width: 66px;
+  height: 24px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(110, 93, 246, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cursorPillVisible {
+  opacity: 1;
+}
+
 @media (max-width: 767px) {
   .card { padding: 16px; }
+  .cursorPill { display: none; }
 }

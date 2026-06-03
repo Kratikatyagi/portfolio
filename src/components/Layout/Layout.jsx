@@ -1,4 +1,5 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
 import { useTheme } from '../../context/ThemeContext'
 import styles from './Layout.module.css'
 
@@ -11,6 +12,12 @@ const navItems = [
 
 export default function Layout() {
   const { theme, toggle } = useTheme()
+  const location = useLocation()
+  const mainRef = useRef(null)
+
+  useEffect(() => {
+    if (mainRef.current) mainRef.current.scrollTop = 0
+  }, [location.pathname])
 
   return (
     <div className={styles.viewport}>
@@ -49,7 +56,7 @@ export default function Layout() {
         </nav>
 
         {/* ── Scrollable content ── */}
-        <main className={styles.content}>
+        <main ref={mainRef} className={styles.content}>
           <Outlet />
         </main>
 

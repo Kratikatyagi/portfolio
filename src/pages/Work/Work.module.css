@@ -63,18 +63,13 @@
 
   .grid {
     display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    flex-direction: column;
     gap: 12px;
   }
 
-  .grid::-webkit-scrollbar { display: none; }
-
   .grid > * {
-    flex: 0 0 80%;
-    scroll-snap-align: start;
+    flex: none;
+    width: 100%;
   }
 }
 
