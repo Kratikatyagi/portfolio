@@ -1,15 +1,15 @@
 import styles from './Resume.module.css'
 
-const RESUME_PDF = '/Kratika_UX_Resume.pdf'
+const RESUME_PDF = '/KratikaTyagi_UX_Resume.pdf'
 
 const EXPERIENCE = [
   {
     role: 'UI/UX Designer',
-    company: 'Heavenly Secrets Pvt. Ltd. · Pilgrim, PHD, Thero',
+    company: 'Heavenly Secrets Pvt. Ltd. · Pilgrim, PHD',
     period: 'Oct ’24 – Present',
     points: [
-      'Sole designer owning end-to-end UX across three consumer brands — user research, information architecture, interaction and visual design, prototyping, and launch.',
-      'Designed and shipped two new D2C apps (PHD, Thero) from scratch — 40+ screens each and complete user flows, from concept to launch.',
+      'Sole designer owning end-to-end UX across two consumer brands — user research, information architecture, interaction and visual design, prototyping, and launch.',
+      'Designed and shipped a new D2C app (PHD) from scratch — 40+ screens and complete user flows, from concept to launch.',
       'Redesigned Pilgrim’s app and website, restructuring information architecture and navigation to improve product discovery and checkout.',
       'Ran 15+ A/B tests on core flows and product pages; winning variants I designed improved add-to-cart rate by up to 5.1% (99% statistical confidence) and average order value by 1.8%.',
       'Designed and shipped a Sunscreen UV-Index widget that drove a 3.61% uplift in orders across Delhi, Mumbai, and Pune (128K+ users tested).',
@@ -48,8 +48,8 @@ const PROJECTS = [
     desc: 'Redesigned the mobile product page with clearer hierarchy and social proof; A/B test showed +1.8% average order value over the control across 42K+ visitors.',
   },
   {
-    title: 'PHD & Thero — 0→1 App Design',
-    desc: 'Designed two D2C mobile apps end-to-end as the sole designer — 40+ screens each and all user flows, from concept to launch.',
+    title: 'PHD — 0→1 App Design',
+    desc: 'Designed a D2C mobile app end-to-end as the sole designer — 40+ screens and all user flows, from concept to launch.',
   },
 ]
 
@@ -70,7 +70,7 @@ export default function Resume() {
           </div>
           <a
             href={RESUME_PDF}
-            download="Kratika_UX_Resume.pdf"
+            download="KratikaTyagi_UX_Resume.pdf"
             className={styles.downloadBtn}
           >
             <DownloadIcon /> Download
@@ -80,7 +80,7 @@ export default function Resume() {
         <section className={styles.summary}>
           <p>
             Product Designer with 2+ years designing and shipping user-centered experiences for
-            apps and websites. Sole designer across three brands, owning the full process from
+            apps and websites. Sole designer across two brands, owning the full process from
             user research and information architecture to interaction design, and prototyping.
             Validates design decisions through A/B testing and rapid prototyping in code —
             translating user needs into measurable product outcomes.

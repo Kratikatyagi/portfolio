@@ -1,6 +1,6 @@
 import styles from './Footer.module.css'
 
-const RESUME_PDF = '/Kratika_UX_Resume.pdf'
+const RESUME_PDF = '/KratikaTyagi_UX_Resume.pdf'
 
 export default function Footer() {
   return (
