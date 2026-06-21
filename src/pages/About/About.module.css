@@ -84,7 +84,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.013em;
   color: var(--text-secondary);
@@ -110,6 +110,102 @@
 }
 
 .pillWhen { background: var(--dot-selected); }
+.pillWork { background: var(--dot-work); }
+.pillEdu { background: var(--dot-edu); }
+
+/* ── Two-column info section (Work & Education) ── */
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.infoCard {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: background var(--transition), border-color var(--transition);
+}
+.infoCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url('/card-texture.png') center/cover no-repeat;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+}
+:global([data-theme="dark"]) .infoCard::after {
+  opacity: 0.5;
+}
+:global([data-theme="dark"]) .infoCard {
+  background: linear-gradient(to left, #0f1011, #010101);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.listMain {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.listTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: -0.016em;
+}
+
+.listSub {
+  font-size: 14px;
+  color: var(--text-secondary);
+  letter-spacing: -0.013em;
+}
+
+.listDivider {
+  height: 1px;
+  background: var(--border);
+  margin: 16px 0 0;
+  transition: background var(--transition);
+}
+
+.badge {
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--badge-text);
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 190px;
+  text-align: center;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
 
 /* ── Story text ── */
 .storyText {
@@ -119,14 +215,21 @@
 }
 
 .bio {
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 16px;
+  line-height: 1.5;
   color: var(--text-secondary);
 }
 
+.bioHighlight {
+  color: #000000;
+}
+:global([data-theme="dark"]) .bioHighlight {
+  color: #ffffff;
+}
+
 .bioLong {
-  font-size: 13px;
-  line-height: 1.75;
+  font-size: 16px;
+  line-height: 1.5;
   color: var(--text-muted);
 }
 
@@ -141,7 +244,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   flex: 1;
 }
 
@@ -179,7 +282,7 @@
 }
 
 .stackName {
-  font-size: 11px;
+  font-size: 16px;
   color: var(--text-secondary);
   text-align: center;
 }
@@ -320,6 +423,18 @@
   .carouselCard {
     flex: 0 0 calc(70% - 8px);
     aspect-ratio: 1;
+  }
+
+  .twoCol {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .infoCard { padding: 16px; }
+
+  .badge {
+    font-size: 11px;
+    padding: 8px 10px;
   }
 }
 

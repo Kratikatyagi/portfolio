@@ -1,7 +1,14 @@
 import { useState, useEffect, useRef } from 'react'
 import Footer from '../../components/Footer/Footer'
-import { profile, stack, interests } from '../../data/content'
+import { profile, stack, interests, experience, education } from '../../data/content'
+import { highlight } from '../../utils/highlight'
 import styles from './About.module.css'
+
+const BIO_HIGHLIGHTS = [
+  '2+ years making things look good',
+  'vibrant world of fashion',
+  'design digital experiences people live in.',
+]
 
 const PERSONAL_PHOTOS = [
   '/hobby-1.jpg',  // Modelling for the thrill!!
@@ -69,7 +76,7 @@ export default function About() {
               MY STORY
             </div>
             <div className={styles.storyText}>
-              <p className={styles.bio}>{profile.bio}</p>
+              <p className={styles.bio}>{highlight(profile.bio, BIO_HIGHLIGHTS, styles.bioHighlight)}</p>
               <p className={styles.bioLong}>{profile.bioLong}</p>
             </div>
           </div>
@@ -92,6 +99,51 @@ export default function About() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Work & Education ── */}
+      <section className={styles.twoCol}>
+        <div className={styles.infoCard}>
+          <div className={styles.sectionLabel}>
+            <span className={`${styles.pill} ${styles.pillWork}`} />
+            WORK EXPERIENCE
+          </div>
+          <div className={styles.list}>
+            {experience.map((item, i) => (
+              <div key={i}>
+                <div className={styles.listItem}>
+                  <div className={styles.listMain}>
+                    <span className={styles.listTitle}>{item.company}</span>
+                    <span className={styles.listSub}>{item.role}</span>
+                  </div>
+                  <span className={styles.badge}>{item.period}</span>
+                </div>
+                {i < experience.length - 1 && <div className={styles.listDivider} />}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.infoCard}>
+          <div className={styles.sectionLabel}>
+            <span className={`${styles.pill} ${styles.pillEdu}`} />
+            EDUCATION
+          </div>
+          <div className={styles.list}>
+            {education.map((item, i) => (
+              <div key={i}>
+                <div className={styles.listItem}>
+                  <div className={styles.listMain}>
+                    <span className={styles.listTitle}>{item.institution}</span>
+                    <span className={styles.listSub}>{item.degree}</span>
+                  </div>
+                  <span className={styles.badge}>{item.period}</span>
+                </div>
+                {i < education.length - 1 && <div className={styles.listDivider} />}
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -6,7 +6,7 @@
   gap: 16px;
 }
 
-/* Groups hero + twoCol together with tighter 16px gap */
+/* Wraps the hero with a tighter 16px gap */
 .topGroup {
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@
 /* ── Hero ── */
 .hero {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 3fr 2fr; /* ~60% / 40% — adjust ratio here */
   gap: 16px;
   align-items: stretch;
 }
@@ -28,7 +28,7 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -59,8 +59,8 @@
 }
 
 .avatarFrame {
-  width: 72px;
-  height: 72px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: var(--avatar-bg);
   overflow: hidden;
@@ -69,16 +69,16 @@
 }
 
 .avatar {
-  width: 72px;
-  height: 72px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
 }
 
 .avatarPlaceholder {
-  width: 72px;
-  height: 72px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: var(--bg-elevated);
   display: flex;
@@ -92,11 +92,11 @@
 .identity {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .name {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.2;
@@ -104,22 +104,27 @@
 }
 
 .titleTag {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
-  color: var(--text-nav-active);
+  color: #191919;
+}
+:global([data-theme="dark"]) .titleTag {
+  color: #c7c7c7;
 }
 
 .bio {
   font-size: 14px;
-  line-height: 1.7;
+  line-height: 1.5;
   color: var(--text-secondary);
+  margin-top: 6px;
 }
 
 .heroRight {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 372px;
+  width: 100%;
+  min-width: 0;
 }
 
 /* ── Location card ── */
@@ -164,11 +169,11 @@
 .locationText {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
 
 .locationLabel {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-secondary);
 }
 
@@ -231,7 +236,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.013em;
   color: var(--text-secondary);
@@ -246,9 +251,6 @@
   flex-shrink: 0;
 }
 
-.pillWork { background: var(--dot-work); }
-.pillEdu { background: var(--dot-edu); }
-.pillSelected { background: var(--dot-selected); }
 
 .socialRow {
   display: flex;
@@ -276,182 +278,6 @@
   opacity: 0.8;
 }
 
-/* ── Two-column info section ── */
-.twoCol {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.infoCard {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--bg-card);
-  padding: 32px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  transition: background var(--transition), border-color var(--transition);
-}
-.infoCard::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: url('/card-texture.png') center/cover no-repeat;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-}
-:global([data-theme="dark"]) .infoCard::after {
-  opacity: 0.5;
-}
-:global([data-theme="dark"]) .infoCard {
-  background: linear-gradient(to left, #0f1011, #010101);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.listItem {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-}
-
-.listMain {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  flex: 1;
-  min-width: 0;
-}
-
-.listTitle {
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--text-primary);
-  letter-spacing: -0.016em;
-}
-
-.listSub {
-  font-size: 14px;
-  color: var(--text-secondary);
-  letter-spacing: -0.013em;
-}
-
-.listDivider {
-  height: 1px;
-  background: var(--border);
-  margin: 16px 0 0;
-  transition: background var(--transition);
-}
-
-.badge {
-  background: var(--badge-bg);
-  border: 1px solid var(--badge-border);
-  border-radius: var(--radius-sm);
-  padding: 12px 16px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--badge-text);
-  white-space: nowrap;
-  flex-shrink: 0;
-  width: 160px;
-  text-align: center;
-  transition: background var(--transition), border-color var(--transition), color var(--transition);
-}
-
-/* ── Work section ── */
-.workSection {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--bg-card);
-  padding: 24px;
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  transition: border-color var(--transition);
-}
-.workSection::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: url('/card-texture.png') center/cover no-repeat;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-}
-:global([data-theme="dark"]) .workSection::after {
-  opacity: 0.5;
-}
-:global([data-theme="dark"]) .workSection {
-  background: linear-gradient(to left, #0f1011, #010101);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.workHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.sectionHeading {
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-}
-
-.viewAll {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  transition: color var(--transition);
-}
-
-.viewAll:hover {
-  color: var(--text-primary);
-}
-
-.projectGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-/* Applied to ProjectCard instances in the homepage work section only */
-.homeCard {
-  height: 400px;
-  padding: 0 24px 24px;
-}
-
-:global([data-theme="dark"]) .homeCard {
-  border-color: rgba(255, 255, 255, 0.05);
-}
-
-.homeCardBg {
-  inset: 0;
-}
-
-.homeCardLeft {
-  gap: 8px;
-}
 
 /* ════════════════════════════════
    MOBILE  (< 768px)
@@ -474,44 +300,12 @@
     min-height: 120px;
   }
 
-  .twoCol {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  .projectGrid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    gap: 12px;
-  }
-
-  .projectGrid::-webkit-scrollbar { display: none; }
-
-  .projectGrid > * {
-    flex: 0 0 80%;
-    scroll-snap-align: start;
-  }
-
-  .badge {
-    font-size: 11px;
-    padding: 8px 10px;
-  }
-
   .heroLeft { padding: 16px; }
-  .homeCard { height: 360px; }
-  .workSection { padding: 16px; overflow: visible; }
-  .infoCard { padding: 16px; }
   .name { font-size: 20px; }
-  .sectionHeading { font-size: 17px; }
 }
 
-/* ── Tablet (768–1024px): 2-col grid ── */
+/* ── Tablet (768–1024px) ── */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .projectGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .heroRight { width: 300px; }
+  .hero { grid-template-columns: 3fr 2fr; }
+  .heroRight { width: 100%; }
 }

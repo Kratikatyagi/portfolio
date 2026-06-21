@@ -1,13 +1,9 @@
-import { useNavigate } from 'react-router-dom'
-import ProjectCard from '../../components/ProjectCard/ProjectCard'
 import Footer from '../../components/Footer/Footer'
-import { profile, experience, education, projects } from '../../data/content'
+import SelectedWork from '../../components/SelectedWork/SelectedWork'
+import { profile, projects } from '../../data/content'
 import styles from './Home.module.css'
 
 export default function Home() {
-  const navigate = useNavigate()
-  const featuredProjects = projects.slice(0, 2)
-
   return (
     <div className={styles.page}>
       {/* ── Top group: Hero + Info cards ── */}
@@ -60,71 +56,10 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ── Work & Education ── */}
-      <section className={styles.twoCol}>
-        <div className={styles.infoCard}>
-          <div className={styles.sectionLabel}>
-            <span className={`${styles.pill} ${styles.pillWork}`} />
-            WORK EXPERIENCE
-          </div>
-          <div className={styles.list}>
-            {experience.map((item, i) => (
-              <div key={i}>
-                <div className={styles.listItem}>
-                  <div className={styles.listMain}>
-                    <span className={styles.listTitle}>{item.company}</span>
-                    <span className={styles.listSub}>{item.role}</span>
-                  </div>
-                  <span className={styles.badge}>{item.period}</span>
-                </div>
-                {i < experience.length - 1 && <div className={styles.listDivider} />}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className={styles.infoCard}>
-          <div className={styles.sectionLabel}>
-            <span className={`${styles.pill} ${styles.pillEdu}`} />
-            EDUCATION
-          </div>
-          <div className={styles.list}>
-            {education.map((item, i) => (
-              <div key={i}>
-                <div className={styles.listItem}>
-                  <div className={styles.listMain}>
-                    <span className={styles.listTitle}>{item.institution}</span>
-                    <span className={styles.listSub}>{item.degree}</span>
-                  </div>
-                  <span className={styles.badge}>{item.period}</span>
-                </div>
-                {i < education.length - 1 && <div className={styles.listDivider} />}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
       </div>{/* end topGroup */}
 
       {/* ── Selected Work ── */}
-      <section className={styles.workSection}>
-        <div className={styles.sectionLabel}>
-          <span className={`${styles.pill} ${styles.pillSelected}`} />
-          SELECTED WORK
-        </div>
-        <div className={styles.projectGrid}>
-          {featuredProjects.map(p => (
-            <ProjectCard
-              key={p.slug}
-              {...p}
-              className={styles.homeCard}
-              bgClassName={styles.homeCardBg}
-              leftClassName={styles.homeCardLeft}
-            />
-          ))}
-        </div>
-      </section>
+      <SelectedWork projects={projects} />
 
       <Footer />
     </div>

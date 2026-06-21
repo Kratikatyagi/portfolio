@@ -1,0 +1,253 @@
+/* ── Selected Work (tabbed) ── */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  padding: 24px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+.section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url('/card-texture.png') center/cover no-repeat;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+}
+:global([data-theme="dark"]) .section::after {
+  opacity: 0.5;
+}
+:global([data-theme="dark"]) .section {
+  background: linear-gradient(to left, #0f1011, #010101);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.013em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.pillSelected {
+  width: 16px;
+  height: 8px;
+  border-radius: 32px;
+  flex-shrink: 0;
+  background: var(--dot-selected);
+}
+
+/* ── Vertical stack of case studies ── */
+.stack {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+/* ── Case study card ── */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  cursor: pointer;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--bg-card);
+  transition: border-color var(--transition), transform var(--transition);
+}
+:global([data-theme="dark"]) .card {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.card:hover {
+  border-color: color-mix(in srgb, var(--text-secondary) 40%, transparent);
+}
+
+.cardLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardLabelRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.pill {
+  width: 16px;
+  height: 8px;
+  border-radius: 32px;
+  flex-shrink: 0;
+}
+
+.cardLabel {
+  font-size: 14px;
+  color: var(--text-secondary);
+  letter-spacing: -0.013em;
+  white-space: nowrap;
+}
+
+.headline {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.0103em;
+  color: var(--text-primary);
+}
+
+.description {
+  width: 100%;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--text-secondary);
+}
+
+.metricRow {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.metric {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 8px 12px;
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+:global([data-theme="dark"]) .metric {
+  background: rgba(20, 20, 22, 0.55);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.metricValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: #08090a;
+  letter-spacing: -0.01em;
+}
+:global([data-theme="dark"]) .metricValue {
+  color: #fff;
+}
+
+.metricLabel {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+}
+:global([data-theme="dark"]) .metricLabel {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Preview image ── */
+.preview {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--badge-bg);
+}
+
+.preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  display: block;
+}
+
+.previewPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: var(--badge-bg);
+}
+
+/* Gradient scrim: above the image, below the metric pills */
+.previewScrim {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 55%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.45) 45%, rgba(255, 255, 255, 0) 100%);
+}
+:global([data-theme="dark"]) .previewScrim {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.45) 45%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* ── Cursor-following "Read" pill ── */
+.cursorPill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10;
+  transform: translate(calc(var(--cx, 0px) - 10%), calc(var(--cy, 0px) + 24px));
+  transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.15s ease;
+  opacity: 0;
+  background: var(--pill-bg, linear-gradient(180deg, #6E5DF6, #C68DF6));
+  color: #fff;
+  width: 66px;
+  height: 24px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(110, 93, 246, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cursorPillVisible {
+  opacity: 1;
+}
+
+/* ── Below 1680px: stack the cards vertically ── */
+@media (max-width: 1689px) {
+  .stack { flex-direction: column; }
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+  .section { padding: 16px; }
+  .card { padding: 16px; }
+  .cardLeft { padding-right: 0; }
+  .preview { height: 200px; }
+  .cursorPill { display: none; }
+}

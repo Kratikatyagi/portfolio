@@ -1,6 +1,6 @@
 export const profile = {
   name: 'Kratika Tyagi',
-  title: 'Product Designer',
+  title: 'User Experience Designer',
   bio: "2+ years making things look good, I've traded apparel ✂ for pixels ■. My design journey started in the vibrant world of fashion; now I design digital experiences people live in.",
   bioLong: "But that's not where it truly began. It began with paper crafts, handmade cards, and afternoons spent cutting and colouring simply because it made me happy. That small love for creating gradually transformed into many things over time, and with every step I learned a little more about form, detail, and the way people connect with what they use and love.",
   email: 'kratikatyagi.works@gmail.com',
@@ -74,6 +74,15 @@ export const projects = [
     category: 'UI/UX · Vibe-coded Implementation',
     company: 'Pilgrim',
     year: '2026',
+    accent: '#a000cb',
+    cardLabel: 'Contextual Personalisation',
+    cardHeadline: 'Turning confusion into an obvious one',
+    cardDescription: "A UV-index-driven recommender that surfaces the right SPF for today's weather.",
+    cardMetrics: [
+      { value: '+16.31%', label: 'Add-to-cart rate' },
+      { value: '+15.52%', label: 'Conversion rate' },
+      { value: '+3.61%', label: 'Orders' },
+    ],
     thumbnail: { dark: '/uv-header-dark.png', light: '/uv-header-light.png' },
     // Adjust the card image freely — any CSS works here. Optional dark/light overrides.
     thumbnailStyle: { height: '100%', width: '100%', objectFit: 'cover', objectPosition: 'center' },
@@ -322,6 +331,15 @@ export const projects = [
     category: 'UI/UX · A/B Test',
     company: 'Pilgrim',
     year: '2025',
+    accent: '#02b8cc',
+    cardLabel: 'Pre-Purchase Experience',
+    cardHeadline: 'Turning hesitation into confident decisions',
+    cardDescription: 'A PDP redesign that helps shoppers compare shades and make better decisions.',
+    cardMetrics: [
+      { value: '+4.2%', label: 'Conversion rate' },
+      { value: '+2.4%', label: 'Add-to-cart rate' },
+      { value: '+4.8%', label: 'Click-through rate' },
+    ],
     thumbnail: { dark: '/makeup-header-dark.png', light: '/makeup-header-light.png' },
     // Adjust the card image freely — any CSS works here. Optional dark/light overrides.
     thumbnailStyle: { height: '100%', width: '100%', objectFit: 'cover', objectPosition: 'center' },
