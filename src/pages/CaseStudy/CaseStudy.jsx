@@ -4,6 +4,7 @@ import Footer from '../../components/Footer/Footer'
 import ProjectCard from '../../components/ProjectCard/ProjectCard'
 import { useTheme } from '../../context/ThemeContext'
 import { projects } from '../../data/content'
+import UVBody from './CaseStudyUV'
 import styles from './CaseStudy.module.css'
 
 export default function CaseStudy() {
@@ -41,12 +42,23 @@ export default function CaseStudy() {
         <ArrowLeftIcon /> Back to Work
       </button>
 
+      {project.layout === 'uv-v2' ? (
+        <UVBody project={project} theme={theme} />
+      ) : (
+      <>
       {/* ── Header banner (theme-aware) ── */}
       {project.headerImage && (
         <div className={styles.uvBanner}>
           <div className={styles.uvBannerText}>
             <h1 className={styles.uvBannerTitle}>{project.title}</h1>
             <p className={styles.uvBannerSub}>{project.headerImage.subtitle || 'UX Case Study'}</p>
+            {project.headerImage.keywords && (
+              <div className={styles.uvBannerKeywords}>
+                {project.headerImage.keywords.map((k, i) => (
+                  <span key={i} className={styles.uvBannerKeyword}>{k}</span>
+                ))}
+              </div>
+            )}
           </div>
           <div className={styles.uvBannerImage}>
             <img
@@ -79,7 +91,7 @@ export default function CaseStudy() {
               {project.meta.map((m, i) => (
                 <div key={i} className={styles.metaRow}>
                   <dt className={styles.metaLabel}>{m.label}</dt>
-                  <dd className={styles.metaValue}>{m.value}</dd>
+                  <dd className={styles.metaValue}><RichText text={m.value} /></dd>
                 </div>
               ))}
             </dl>
@@ -381,6 +393,8 @@ export default function CaseStudy() {
           <p>Full case study coming soon.</p>
         </div>
       )}
+      </>
+      )}
       </div>
 
       <div className={styles.bottomRow}>
@@ -574,12 +588,16 @@ function FinalDesignSection({ designs }) {
 }
 
 function RichText({ text }) {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g)
-  return parts.map((p, i) =>
-    p.startsWith('**') && p.endsWith('**')
-      ? <strong key={i}>{p.slice(2, -2)}</strong>
-      : <Fragment key={i}>{p}</Fragment>
-  )
+  const parts = text.split(/(\*\*[^*]+\*\*|==[^=]+==)/g)
+  return parts.map((p, i) => {
+    if (p.startsWith('**') && p.endsWith('**')) {
+      return <strong key={i}>{p.slice(2, -2)}</strong>
+    }
+    if (p.startsWith('==') && p.endsWith('==')) {
+      return <span key={i} className={styles.metaHighlight}>{p.slice(2, -2)}</span>
+    }
+    return <Fragment key={i}>{p}</Fragment>
+  })
 }
 
 function Hypotheses({ data }) {
