@@ -17,6 +17,7 @@
   --uv-card-border: #292929;
   --uv-card-border-active: #3e3e3e;
   --uv-tint: rgba(242, 191, 13, 0.05);
+  --uv-tint-strong: rgba(242, 191, 13, 0.12);
   --uv-border-subtle: rgba(255, 255, 255, 0.1);
   --uv-surface-elevated: #1c1c1f;
   --uv-muted: #b8b8b8;
@@ -44,6 +45,7 @@
   --uv-card-border: rgba(0, 0, 0, 0.1);
   --uv-card-border-active: rgba(0, 0, 0, 0.18);
   --uv-tint: rgba(242, 191, 13, 0.08);
+  --uv-tint-strong: rgba(242, 191, 13, 0.14);
   --uv-border-subtle: rgba(0, 0, 0, 0.1);
   --uv-surface-elevated: #f0efed;
   --uv-muted: #666;
@@ -59,6 +61,26 @@
   --uv-inset-border-strong: rgba(0, 0, 0, 0.1);
   --uv-offer-header-muted: #666;
   --uv-offer-empty: rgba(0, 0, 0, 0.15);
+}
+
+/* ── Steel accent variant (pre-purchase case study) ──
+   Re-points only the accent-derived tokens; everything else
+   inherits the shared dark / light palette above. */
+.steel {
+  --uv-gold: #02b8cc;
+  --uv-gold-bright: #80dbe5;
+  --uv-tint: rgba(2, 184, 204, 0.05);
+  --uv-tint-strong: rgba(2, 184, 204, 0.16);
+  --uv-keyword-border: rgba(2, 184, 204, 0.5);
+  --uv-keyword-shadow: rgba(2, 184, 204, 0.3);
+}
+:global([data-theme="light"]) .steel {
+  --uv-gold: #0a8493;
+  --uv-gold-bright: #06707d;
+  --uv-tint: rgba(2, 184, 204, 0.08);
+  --uv-tint-strong: rgba(2, 184, 204, 0.16);
+  --uv-keyword-border: rgba(6, 112, 125, 0.4);
+  --uv-keyword-shadow: rgba(6, 112, 125, 0.12);
 }
 
 /* ── Banner ── */
@@ -743,6 +765,196 @@
   line-height: 1.2;
 }
 
+/* ── Figure (single captioned image) ── */
+.figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+}
+.figureImg {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--uv-card-border);
+  background: var(--uv-card-bg);
+}
+.figureCaption {
+  max-width: 620px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--uv-muted);
+}
+
+/* ── Phone mockup row ── */
+.phones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+.phoneShot {
+  height: 480px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+/* ── Info box (icon + accent-barred list) ── */
+.infoBox {
+  display: flex;
+  gap: 14px;
+  padding: 20px;
+  background: var(--uv-tint);
+  border: 1px solid var(--uv-border-subtle);
+  border-radius: 16px;
+}
+.infoBoxIcon {
+  font-size: 22px;
+  line-height: 1.3;
+  flex: 0 0 auto;
+}
+.infoBoxList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.infoBoxItem {
+  padding-left: 14px;
+  border-left: 3px solid var(--uv-gold);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--uv-body);
+}
+
+/* ── Pills ── */
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.pill {
+  padding: 10px 18px;
+  background: var(--uv-card-bg);
+  border: 1px solid var(--uv-card-border);
+  border-radius: 12px;
+  font-size: 14px;
+  color: var(--uv-body);
+  white-space: nowrap;
+}
+
+/* ── Priority tiers ── */
+.tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.tier {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.tierLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--uv-strong);
+  padding-top: 9px;
+}
+.tierIcon {
+  font-size: 17px;
+}
+
+/* ── Link button ── */
+.linkButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  padding: 12px 22px;
+  background: var(--uv-tint);
+  border: 1px solid var(--uv-gold);
+  border-radius: 8px;
+  color: var(--uv-gold);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.linkButton:hover {
+  background: var(--uv-tint-strong);
+  transform: translateY(-1px);
+}
+
+/* ── Annotated design (tall mockup with side callouts) ── */
+.annotated {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+.annotatedSide {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+}
+.annotatedCenter {
+  flex: 0 0 auto;
+  width: min(340px, 52vw);
+}
+.annotatedImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
+}
+.annotatedNote {
+  position: absolute;
+  width: min(240px, 90%);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.annotatedSide[data-side="left"] .annotatedNote {
+  right: 36px;
+  text-align: right;
+  align-items: flex-end;
+}
+.annotatedSide[data-side="right"] .annotatedNote {
+  left: 36px;
+  text-align: left;
+  align-items: flex-start;
+}
+.annotatedNote::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  width: 28px;
+  height: 1px;
+  background: var(--uv-border-subtle);
+}
+.annotatedSide[data-side="left"] .annotatedNote::before {
+  right: -32px;
+}
+.annotatedSide[data-side="right"] .annotatedNote::before {
+  left: -32px;
+}
+.annotatedMobile {
+  display: none;
+}
+
 /* ════════════════════════════════════════════════════════════
    TABLET  (≤ 1000px)
    ════════════════════════════════════════════════════════════ */
@@ -905,5 +1117,38 @@
     grid-template-columns: 90px 150px 1fr;
     min-width: 460px;
     gap: 16px;
+  }
+
+  .phoneShot { height: auto; width: 46%; }
+  .tier { grid-template-columns: 1fr; gap: 12px; }
+  .tierLabel { padding-top: 0; }
+}
+
+/* ── New blocks: collapse annotated mockup on smaller screens ── */
+@media (max-width: 900px) {
+  .annotated {
+    flex-direction: column;
+    align-items: center;
+  }
+  .annotatedSide {
+    display: none;
+  }
+  .annotatedCenter {
+    width: min(420px, 100%);
+  }
+  .annotatedMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-top: 28px;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    max-width: 480px;
+  }
+  .annotatedMobile li {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
   }
 }
