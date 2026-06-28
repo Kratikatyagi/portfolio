@@ -66,6 +66,370 @@ export const interests = [
 
 export const projects = [
   {
+    slug: 'uv-index-v2',
+    layout: 'uv-v2',
+    title: 'Contextual Personalisation of Products',
+    tagline: '',
+    readTime: '6m',
+    readTimeGradient: 'linear-gradient(180deg, #f2bf0d, #7a6105)',
+    category: 'UI/UX · 0→1 · A/B Validated',
+    company: 'Pilgrim',
+    year: '2026',
+    accent: '#f2bf0d',
+    cardLabel: 'Contextual Personalisation',
+    cardHeadline: 'Turning confusion into an obvious choice',
+    cardDescription: "A UV-index-driven recommender that surfaces the right SPF for today's weather.",
+    cardMetrics: [
+      { value: '+16.31%', label: 'Add-to-cart rate' },
+      { value: '+15.52%', label: 'Conversion rate' },
+      { value: '+3.61%', label: 'Orders' },
+    ],
+    thumbnail: { dark: '/uv-header-dark.png', light: '/uv-header-light.png' },
+    thumbnailStyle: { height: '100%', width: '100%', objectFit: 'cover', objectPosition: 'center' },
+    thumbnailOverlay: null,
+    headerImage: {
+      dark: '/uv-header-dark.png',
+      light: '/uv-header-light.png',
+      subtitle: null,
+      keywords: ['Contextual Personalisation', 'UV → SPF mapping', 'A/B Validated'],
+    },
+    sections: [
+      {
+        id: 'overview',
+        label: 'TL; DR',
+        heading: [{ t: 'Project ' }, { t: 'Overview', gold: true }],
+        headingCase: 'title',
+        groups: [
+          {
+            blocks: [
+              { type: 'lead', text: 'A UV-index-driven recommendation widget for product page and cart drawer that reads the local UV index, ==removes the SPF decision fatigue==, and surfaces the right product at the moment the user is already deciding.' },
+              {
+                type: 'cards',
+                columns: 3,
+                variant: 'text',
+                items: [
+                  { label: 'Category', value: 'Beauty & Personal Care, E-commerce, D2C' },
+                  { label: 'Date', value: 'April 2026 → May 2026' },
+                  { label: 'Platform', value: 'Mobile Web (Shopify)' },
+                ],
+              },
+              {
+                type: 'cards',
+                columns: 2,
+                variant: 'text',
+                items: [
+                  { label: 'My Role', value: '0→1 ownership · Research · UX/UI design · Frontend · A/B testing' },
+                  { label: 'Team', value: 'Sole Designer (UXID & Frontend) & Backend Engineer' },
+                ],
+              },
+            ],
+          },
+          {
+            blocks: [
+              { type: 'lead', text: 'What we achieved' },
+              {
+                type: 'cards',
+                columns: 4,
+                variant: 'metric',
+                items: [
+                  { label: 'Add-to-cart rate', value: '+16.31%' },
+                  { label: 'Conversion rate', value: '+15.52%' },
+                  { label: 'Category Orders uplift', value: '+3.61%' },
+                  { label: 'Overall AOV uplift', value: '+0.38%' },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'context',
+        label: 'Context',
+        heading: [{ t: 'THE SEASONAL ' }, { t: 'BET', gold: true }],
+        intro: [
+          { type: 'paragraphs', items: [
+            'In Summer 2026, sunscreen became a key growth focus for Pilgrim — a high-demand, seasonal category backed by increased marketing spend across paid and organic channels.',
+            'A majority of this traffic (~90%) was being directed straight to product pages, making ==PDPs the primary conversion surface== for the category.',
+          ] },
+        ],
+      },
+      {
+        id: 'problem',
+        label: 'Problem Statement',
+        heading: [{ t: 'WHERE THE FUNNEL ' }, { t: 'LEAKED', gold: true }],
+        intro: [
+          { type: 'paragraphs', items: [
+            "Sunscreen is the only beauty category where the right product depends on something outside the user — the weather. Yet the PDP gave them no contextual signal to decide. High-intent traffic was landing on a page that couldn't answer the one question that mattered: ==which SPF is actually right for me?==",
+          ] },
+        ],
+        blocks: [
+          { type: 'callout', style: 'bar', title: 'High intent. No context. No conversion.', body: 'That gap is the whole story.' },
+        ],
+      },
+      {
+        id: 'research',
+        label: 'Research',
+        heading: [{ t: 'FINDING THE ' }, { t: 'RIGHT SURFACE', gold: true }],
+        headingGap: 32,
+        inlineBlocks: true,
+        blocks: [
+          {
+            type: 'group',
+            gap: 32,
+            blocks: [
+              {
+                type: 'group',
+                gap: 16,
+                blocks: [
+                  { type: 'subheading', text: 'READING THE DROP-OFF' },
+                  { type: 'list', ordered: true, items: [
+                    'Analytics — Sunscreen PDPs pulled strong seasonal traffic and healthy dwell time, but converted below the category benchmark. High interest, low conversion. The leak was real, not a hunch.',
+                    'Session recordings — One pattern repeated: users scrolled into the SPF and benefits, paused, scrolled back, and left without adding. Hesitation, not disinterest.',
+                  ] },
+                ],
+              },
+              {
+                type: 'group',
+                gap: 16,
+                blocks: [
+                  { type: 'subheading', text: 'WHO WAS LEAKING' },
+                  { type: 'personas', items: [
+                    {
+                      image: '/uv2-meera.png',
+                      name: 'MEERA',
+                      tagline: 'Decided, but undecided',
+                      quote: "I know I need sunscreen, I just can't tell which one.",
+                      context: 'She has the intent, not the confidence. So the fix had to live on the ==product page==, where she gets stuck.',
+                    },
+                    {
+                      image: '/uv2-kabir.png',
+                      name: 'KABIR',
+                      tagline: 'Not shopping for sunscreen',
+                      quote: "Sunscreen? That wasn't even on my list today.",
+                      context: "There's no intent to build on. So the reason has to come to him, placed ==inside his flow== rather than waiting on a page he'll never visit.",
+                    },
+                  ] },
+                  { type: 'callout', style: 'icon', label: 'OPPORTUNITY', body: 'One gap, two moments. Meera needs the answer surfaced on the page; Kabir needs the reason raised in the cart. One signal, two surfaces.' },
+                ],
+              },
+              {
+                type: 'group',
+                gap: 8,
+                blocks: [
+                  { type: 'subheading', text: 'WHERE THE FIX HAD TO LIVE' },
+                  {
+                    type: 'group',
+                    gap: 16,
+                    blocks: [
+                      { type: 'paragraphs', items: ["The journey has five surfaces. The decision only breaks on two, so that's where the system lives."] },
+                      {
+                        type: 'journey',
+                        steps: ['Homepage', 'Collection', 'PDP', 'Cart', 'Checkout'],
+                        highlight: ['PDP', 'Cart'],
+                        markers: [
+                          { step: 'PDP', name: 'MEERA', label: 'Build conviction' },
+                          { step: 'Cart', name: 'KABIR', label: 'Raise the question' },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'hypothesis',
+        label: 'Hypothesis',
+        heading: [{ t: 'FINDING THE ' }, { t: 'RIGHT SIGNAL', gold: true }],
+        intro: [
+          { type: 'paragraphs', items: [
+            'Most beauty merchandising is built around who you are: skin type, concern, age, preference.',
+            "Sunscreen is the exception. The right SPF doesn't depend on the person. It depends on what's happening outside, today, where they are. So I picked the signal closest to that decision: the UV index.",
+            "Surface that at the right moment, and the product choice wouldn't need selling. It would simply look correct.",
+          ] },
+        ],
+        blocks: [
+          { type: 'callout', style: 'bar', title: 'UV number in, SPF answer out.', body: 'The signal maps straight to the decision.' },
+        ],
+      },
+      {
+        id: 'exploration',
+        label: 'Design Exploration',
+        heading: [{ t: 'FINDING THE ' }, { t: 'RIGHT FORM', gold: true }],
+        headingGap: 24,
+        inlineBlocks: true,
+        blocks: [
+          {
+            type: 'group',
+            gap: 40,
+            blocks: [
+              {
+                type: 'group',
+                gap: 16,
+                blocks: [
+                  {
+                    type: 'group',
+                    gap: 4,
+                    blocks: [
+                      { type: 'subheading', text: "ON THE PDP — Meera's confusion" },
+                      { type: 'paragraphs', items: ["Three ways to surface the recommendation. Each one tested against the same question: would this clear user's confusion at the moment they're stuck?"] },
+                    ],
+                  },
+                  { type: 'variants', columns: 3, items: [
+                    { label: 'Direction A', name: 'Inline Copy', image: '/uv-image3.png', points: ['No scale or number, reads as fluff', "Meera still can't see why this SPF"] },
+                    { label: 'Direction B', name: 'Full skin regime', image: '/uv-image4.png', points: ['Long regime, loads below the fold', 'Most users never see it'] },
+                    { label: 'Direction C', name: 'UV module Just below CTA', image: '/uv-image6.png', shipped: true, points: ['One tap from the CTA, right where she decides', "Removes doubt, doesn't sell"] },
+                  ] },
+                ],
+              },
+              {
+                type: 'group',
+                gap: 16,
+                blocks: [
+                  {
+                    type: 'group',
+                    gap: 4,
+                    blocks: [
+                      { type: 'subheading', text: "IN THE CART — Kabir's missed intent" },
+                      { type: 'paragraphs', items: ['Two ways to raise sunscreen for someone who never came for it. One helped, one intruded.'] },
+                    ],
+                  },
+                  { type: 'variants', columns: 2, items: [
+                    { label: 'Direction A', name: 'Heavy hero card with full imagery', image: '/uv-image7.png', points: ['Took over the drawer, read as an interruption', 'Pushy for someone with zero intent, easy to dismiss'] },
+                    { label: 'Direction B', name: 'Compact contextual card with dynamic price', image: '/uv-image2.png', shipped: true, points: ['UV sets the why, product the what, live price the offer', 'Raises the reason without blocking his checkout'] },
+                  ] },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'solutions',
+        label: 'Final Solutions',
+        heading: [{ t: 'EVERY PIXEL ' }, { t: 'EARNS ITS PLACE', gold: true }],
+        intro: [
+          { type: 'paragraphs', items: ['What Meera sees on the page, and what catches Kabir in the cart. Each decision grounded in a UX principle, not a hunch.'] },
+        ],
+        bodyGap: 24,
+        blocks: [
+          { type: 'finalDesigns', items: [
+            {
+              image: '/uv-image1.png',
+              label: 'PDP: answer Meera’s confusion',
+              annotations: [
+                { side: 'left', law: "Hick's Law", body: 'One UV reading → one SPF answer. Decision removed entirely.' },
+                { side: 'left', law: 'Law of Proximity', body: 'UV level, city, and copy grouped as one contextual unit.' },
+                { side: 'right', law: 'Serial Position Effect', body: 'Below price, above CTA — peak-intent real estate.' },
+                { side: 'right', law: 'Von Restorff Effect', body: 'Colour-coded bar makes the risk level scannable before a word is read.' },
+              ],
+            },
+            {
+              image: '/uv-image2.png',
+              label: 'Cart: raise Kabir’s missing intent',
+              annotations: [
+                { side: 'left', law: 'Goal-Gradient Effect', body: 'Dynamic copy shows exactly what unlocks the next offer tier.' },
+                { side: 'left', law: 'Selective Attention', body: 'Hides if sunscreen is already in cart — never noise.' },
+                { side: 'right', law: 'Law of Proximity', body: 'UV, product, and price in one card — the why, what, and how-much at a glance.' },
+                { side: 'right', law: 'Doherty Threshold', body: '"Very High UV → SPF 50+" answers the why in under 400ms.' },
+              ],
+            },
+          ] },
+        ],
+      },
+      {
+        id: 'system',
+        label: 'Behind the Scenes',
+        heading: [{ t: 'THE LOGIC THAT ' }, { t: 'RUNS IT', gold: true }],
+        intro: [
+          { type: 'paragraphs', items: ['The widget looks simple, but behind it sits a set of rules deciding when to appear, when to stay quiet, and what price to show. None of it is visible, all of it shapes whether the widget feels helpful or annoying.'] },
+        ],
+        bodyGap: 24,
+        blocks: [
+          {
+            type: 'group',
+            gap: 24,
+            blocks: [
+              { type: 'gate', label: 'WIDGET HIDES WHEN', rules: ['Cart is empty', 'A sunscreen is already in cart', 'Recommended product is already in cart'] },
+              {
+                type: 'group',
+                gap: 16,
+                blocks: [
+                  { type: 'subheading', text: 'WHAT PRICE IT SHOWS' },
+                  { type: 'paragraphs', items: ['Pilgrim runs five offer types at once, so the widget reads the live offer and the cart, then shows the right price for that exact moment.'] },
+                  { type: 'offerMap', rows: [
+            { offer: 'Flat 25%', state: 'any cart state', shows: 'Strikethrough + −25% price' },
+            { offer: 'Flat 40%', state: 'any cart state', shows: 'Strikethrough + −40% price' },
+            { offer: 'B1G1', state: '0 qualifying in cart', shows: '"Add 1 → get 1 FREE"' },
+            { offer: '', state: '1+ qualifying in cart', shows: '"FREE"' },
+            { offer: 'B2G2', state: '< 2 qualifying in cart', shows: '"Buy 2, get 2 FREE"' },
+            { offer: '', state: '2+ qualifying in cart', shows: '"FREE"' },
+            { offer: 'B3G3', state: '< 3 qualifying in cart', shows: '"Buy 3 @ ₹999"' },
+            { offer: '', state: '3+ qualifying in cart', shows: '"₹999 for 3"' },
+                  ] },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'measurement',
+        label: 'Measurement',
+        heading: [{ t: 'WIRED FOR ' }, { t: 'PROOF', gold: true }],
+        headingGap: 16,
+        inlineBlocks: true,
+        blocks: [
+          { type: 'paragraphs', items: ['Before launch, I wired the widget to prove itself, and rolled it out gradually.'] },
+          { type: 'cards', columns: 1, variant: 'text', items: [
+            { label: 'WHY GRADUAL ROLLOUT', value: 'Measure real impact, and contain the risk if anything broke in production.' },
+          ] },
+          { type: 'cards', columns: 2, variant: 'text', items: [
+            { label: 'ROLLOUT', value: '5 days at 20% → 11 days at 50%' },
+            { label: 'CITIES', value: 'Delhi · Mumbai · Pune' },
+          ] },
+          { type: 'paragraphs', items: ['Every widget-driven add was tracked from impression to delivered order, so attribution stayed honest.'] },
+        ],
+      },
+      {
+        id: 'outcome',
+        label: 'Outcome',
+        heading: [{ t: 'WHAT SIXTEEN DAYS ' }, { t: 'PROVED', gold: true }],
+        noDivider: true,
+        headingGap: 16,
+        inlineBlocks: true,
+        blocks: [
+          { type: 'paragraphs', items: ["A 50/50 split: half saw the widget, half didn't. Across 16 days, here's what the widget half did."] },
+          { type: 'cards', columns: 4, variant: 'metric', items: [
+            { label: 'Add-to-cart rate', value: '+16.31%' },
+            { label: 'Conversion rate', value: '+15.52%' },
+            { label: 'Category Orders uplift', value: '+3.61%' },
+            { label: 'Overall AOV uplift', value: '+0.38%' },
+          ] },
+          { type: 'callout', style: 'icon', label: 'What the data revealed', body: 'BOGO offers drove 68% of widget-attributed orders, even though the UV framing was identical across every offer type. The takeaway: context earns the attention, the offer closes the sale. Neither works alone.' },
+        ],
+      },
+      {
+        id: 'reflection',
+        label: 'Reflection',
+        heading: [{ t: 'WHERE THIS SIGNAL COULD ' }, { t: 'GO NEXT', gold: true }],
+        headingGap: 16,
+        inlineBlocks: true,
+        blocks: [
+          { type: 'list', items: [
+            '**Beyond UV** — The engine is signal-agnostic: humidity for hair care, pollen for sensitive skin, temperature for hydration. A contextual relevance engine that happens to wear a UV skin today.',
+            '**Pre-purchase regime** — Direction B, revisited. Now that the contextual frame is proven, the full regime suggestion has ground to stand on.',
+            '**Skin-type layer** — Fold in the Pilgrim quiz profile already on file, taking it from "SPF 50+ for Mumbai" to "SPF 50+ that won\'t break out oily skin in Mumbai."',
+          ] },
+          { type: 'callout', style: 'bar', title: "What I'd do differently", body: "I'd build the offer-detection logic before the UV logic, not beside it. Offers turned out to do more work than I expected. A leaner v0 testing just the offer card would have isolated the variables and sharpened the v1." },
+        ],
+      },
+    ],
+  },
+  /* — v1 UV case study (replaced by uv-index-v2) —
+  {
     slug: 'uv-index',
     title: 'A UV-Driven Sunscreen Recommender',
     tagline: '',
@@ -87,11 +451,16 @@ export const projects = [
     // Adjust the card image freely — any CSS works here. Optional dark/light overrides.
     thumbnailStyle: { height: '100%', width: '100%', objectFit: 'cover', objectPosition: 'center' },
     thumbnailOverlay: null,
-    headerImage: { dark: '/uv-header-dark.png', light: '/uv-header-light.png' },
+    headerImage: {
+      dark: '/uv-header-dark.png',
+      light: '/uv-header-light.png',
+      subtitle: "A contextual recommender that surfaces the right SPF for today's weather.",
+      keywords: ['Contextual Personalisation', 'UV → SPF mapping', 'A/B Validated'],
+    },
     meta: [
       {
         label: 'Project Overview',
-        value: "A UV-index-driven recommendation system for Pilgrim's product page and cart drawer. The widget detects the user's city, surfaces the live UV reading, recommends the right SPF for the day, and adapts price and copy to whatever offer is active in cart. Designed end-to-end, shipped to production, and validated through a 16-day A/B test across Delhi, Mumbai, and Pune.",
+        value: "A UV-index-driven recommendation widget for product page and cart drawer that ==reads the local UV index== and ==recommends the right SPF== for the day.",
       },
       { label: 'Category', value: 'Beauty & Personal Care, E-commerce, Contextual Personalisation' },
       { label: 'Date', value: 'April 2026 → May 2026' },
@@ -322,6 +691,7 @@ export const projects = [
       },
     ],
   },
+  */
   {
     slug: 'pre-purchase-experience',
     title: 'Enhanced Pre-Purchase Experience',

@@ -25,7 +25,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin: 32px 0 0;
+  margin: 16px 0 0;
   font-size: 13px;
   font-weight: 500;
   color: var(--text-muted);
@@ -105,13 +105,15 @@
   position: relative;
   width: 100%;
   margin-top: 0;
-  height: clamp(220px, 30vw, 340px);
+  height: clamp(170px, 24vw, 320px);
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--border);
   background: #ffffff;
   display: flex;
   align-items: center;
+  /* fluid left padding: ~16px on small screens → 32px on large */
+  padding-left: clamp(16px, 2.2vw, 32px);
 }
 
 :global([data-theme="dark"]) .uvBanner {
@@ -122,24 +124,46 @@
 .uvBannerText {
   position: relative;
   z-index: 2;
-  padding-left: clamp(24px, 7%, 80px);
+  padding-left: 0;
   max-width: 50%;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: clamp(4px, 0.6vw, 8px);
 }
 
+/* Fluid type: scales continuously with viewport, no breakpoint jumps.
+   Title: ~20px @375px → 40px @1500px+ */
 .uvBannerTitle {
-  font-size: clamp(20px, 2.6vw, 24px);
+  font-size: clamp(1.1rem, 0.83rem + 1.78vw, 2.5rem);
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 120%;
   letter-spacing: -0.01em;
   color: var(--text-primary);
 }
 
 .uvBannerSub {
-  font-size: 16px;
+  font-size: clamp(0.78rem, 0.72rem + 0.36vw, 1.05rem);
   color: var(--text-secondary);
+  line-height: 150%;
+}
+
+.uvBannerKeywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(6px, 0.7vw, 10px);
+  margin-top: clamp(8px, 1.1vw, 16px);
+}
+
+.uvBannerKeyword {
+  font-size: clamp(0.7rem, 0.63rem + 0.28vw, 0.9rem);
+  font-weight: 500;
+  line-height: 1;
+  color: var(--text-secondary);
+  padding: clamp(5px, 0.6vw, 8px) clamp(10px, 1vw, 14px);
+  border: 1px solid #f2bf0d80;
+  border-radius: 8px;
+  background: transparent;
+  white-space: nowrap;
 }
 
 .uvBannerImage {
@@ -169,16 +193,18 @@
   background: linear-gradient(to left, rgba(0, 0, 0, 0) 45%, #0c0d0e 92%);
 }
 
+/* Mobile: layout only — fluid type above already handles sizing */
 @media (max-width: 640px) {
   .uvBanner {
-    height: clamp(180px, 44vw, 240px);
+    height: auto;
+    min-height: 150px;
+    padding: 16px 0 16px 12px;
   }
   .uvBannerText {
-    max-width: 58%;
-    padding-left: 20px;
+    max-width: 62%;
   }
   .uvBannerImage {
-    width: 52%;
+    width: 48%;
   }
 }
 
@@ -433,6 +459,15 @@
   font-size: 14px;
   color: var(--text-muted);
   line-height: 1.6;
+}
+
+.metaHighlight {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+:global([data-theme="dark"]) .metaHighlight {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* ── Headline metrics ── */
@@ -962,7 +997,7 @@
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 6px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -984,7 +1019,7 @@
 }
 
 .sectionNavItem {
-  font-size: 12px;
+  font-size: 14px;
   font-family: inherit;
   color: var(--text-muted);
   text-align: left;
