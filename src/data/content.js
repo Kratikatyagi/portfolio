@@ -694,6 +694,8 @@ export const projects = [
   */
   {
     slug: 'pre-purchase-experience',
+    layout: 'uv-v2',
+    accentTheme: 'steel',
     title: 'Enhanced Pre-Purchase Experience',
     tagline: '',
     readTime: '7m',
@@ -714,213 +716,307 @@ export const projects = [
     // Adjust the card image freely — any CSS works here. Optional dark/light overrides.
     thumbnailStyle: { height: '100%', width: '100%', objectFit: 'cover', objectPosition: 'center' },
     thumbnailOverlay: null,
-    headerImage: { dark: '/makeup-header-dark.png', light: '/makeup-header-light.png' },
-    meta: [
-      {
-        label: 'Project Overview',
-        value: "A PDP redesign for Pilgrim's beauty category, focused on how customers explore and compare shades and visualise the outcome before they buy. The goal: turn strong product-page interest into confident purchases for shade-dependent items, where a no-return policy makes pre-purchase clarity everything. Researched, designed end-to-end, and validated through a 15-day A/B test.",
-      },
-      { label: 'Category', value: 'Beauty & Personal Care, Consumer Products, E-commerce' },
-      { label: 'Date', value: 'October 2025 → November 2025' },
-      { label: 'My Role', value: 'Conceptualisation, Research, UX/UI, Concept Testing, UAT' },
-      { label: 'Platform', value: 'Mobile Web' },
-      { label: 'Read Time', value: '6–7 mins' },
-    ],
-    headlineMetrics: [
-      { value: '4.2%', label: 'Conversion rate' },
-      { value: '2.4%', label: 'Add-to-cart rate' },
-      { value: '1.4%', label: 'Average order value' },
-      { value: '4.8%', label: 'Click-through rate' },
-    ],
-    heroVisual: null,
+    headerImage: {
+      dark: '/makeup-header-dark.png',
+      light: '/makeup-header-light.png',
+      subtitle: null,
+      keywords: ['PDP Redesign', 'Shade Decision Clarity', 'A/B Validated'],
+    },
     sections: [
+      {
+        id: 'overview',
+        label: 'TL; DR',
+        heading: [{ t: 'Project ' }, { t: 'Overview', gold: true }],
+        headingCase: 'title',
+        groups: [
+          {
+            blocks: [
+              { type: 'lead', text: "A PDP redesign for Pilgrim's shade-dependent beauty range that ==reorganises the page around the decision==, brings shade, price, and proof to the moment of choice, and turns high product-page intent into confident purchases — where a no-return policy makes pre-purchase clarity everything." },
+              {
+                type: 'cards',
+                columns: 3,
+                variant: 'text',
+                items: [
+                  { label: 'Category', value: 'Beauty & Personal Care, Consumer Products, E-commerce' },
+                  { label: 'Date', value: 'October 2025 → November 2025' },
+                  { label: 'Platform', value: 'Mobile Web' },
+                ],
+              },
+              {
+                type: 'cards',
+                columns: 2,
+                variant: 'text',
+                items: [
+                  { label: 'My Role', value: 'Conceptualisation · Research · UX/UI · Concept Testing · UAT' },
+                  { label: 'Team', value: 'Designer (me) & Developer' },
+                ],
+              },
+            ],
+          },
+          {
+            blocks: [
+              { type: 'lead', text: 'What we achieved' },
+              {
+                type: 'cards',
+                columns: 4,
+                variant: 'metric',
+                items: [
+                  { label: 'Conversion rate', value: '+4.2%' },
+                  { label: 'Add-to-cart rate', value: '+2.4%' },
+                  { label: 'Average order value', value: '+1.4%' },
+                  { label: 'Click-through rate', value: '+4.8%' },
+                ],
+              },
+            ],
+          },
+        ],
+      },
       {
         id: 'context',
         label: 'Problem Statement',
-        heading: 'Where commitment broke down',
-        body: [
-          'Pilgrim was seeing strong, growing traffic in beauty — but engagement at the product page level wasn\'t converting into purchases at the same rate, especially for shade-dependent items.',
-          "And with no return policy, the stakes for getting it right before checkout were high. Clarity before purchase wasn't a nice-to-have — it was the whole game. Users weren't failing to find products. They were failing to commit to them.",
+        heading: [{ t: 'WHERE COMMITMENT ' }, { t: 'BROKE DOWN', gold: true }],
+        intro: [
+          { type: 'paragraphs', items: [
+            "Pilgrim was seeing strong, growing traffic in beauty — but engagement at the product page level wasn't converting into purchases at the same rate, especially for ==shade-dependent items==.",
+            "And with no return policy, the stakes for getting it right before checkout were high. Clarity before purchase wasn't a nice-to-have — it was the whole game. Users weren't failing to find products. They were failing to commit to them.",
+          ] },
         ],
-        callout: 'The challenge was not discovery. It was commitment.',
+        blocks: [
+          { type: 'callout', style: 'bar', body: 'The challenge was not discovery. It was commitment.' },
+        ],
       },
       {
         id: 'funnel',
         label: 'Audit',
-        heading: 'What the funnel was telling us',
-        body: ['We first audited the conversion funnel — Homepage → Collection → PDP → Cart → Checkout — to find where hesitation was happening. Users were engaging deeply, not disengaging. The friction was structural.'],
-        bulletsHeading: 'Key Observations:',
-        bullets: [
-          'High PDP traffic — genuine product interest was there.',
-          'Significant drop-offs at the PDP stage, concentrated on shade-based products.',
-          '~20% of users abandoned near the shade-selection section, which sat well below the fold.',
-          'Multiple dead clicks on shade swatches — unclear affordance and poor interaction feedback.',
-          'High interaction time on the "Try On Shade" section despite its deep placement in the hierarchy.',
-          'High review scroll depth — a strong, unmet need for validation.',
-          'Offer interactions didn\'t always convert — a sign of pricing-clarity gaps.',
+        heading: [{ t: 'WHAT THE FUNNEL WAS ' }, { t: 'TELLING US', gold: true }],
+        intro: [
+          { type: 'paragraphs', items: ['We first audited the conversion funnel — Homepage → Collection → PDP → Cart → Checkout — to find where hesitation was happening. Users were engaging deeply, not disengaging. The friction was structural.'] },
         ],
-        callout: 'Users weren\'t disengaged — they were actively evaluating. The friction came from missing information and how decision-critical data was structured and surfaced.',
+        bodyGap: 24,
+        blocks: [
+          {
+            type: 'group',
+            gap: 16,
+            blocks: [
+              { type: 'subheading', text: 'KEY OBSERVATIONS' },
+              { type: 'list', items: [
+                'High PDP traffic — genuine product interest was there.',
+                'Significant drop-offs at the PDP stage, concentrated on shade-based products.',
+                '~20% of users abandoned near the shade-selection section, which sat well below the fold.',
+                'Multiple dead clicks on shade swatches — unclear affordance and poor interaction feedback.',
+                'High interaction time on the "Try On Shade" section despite its deep placement in the hierarchy.',
+                'High review scroll depth — a strong, unmet need for validation.',
+                "Offer interactions didn't always convert — a sign of pricing-clarity gaps.",
+              ] },
+            ],
+          },
+          { type: 'callout', style: 'bar', body: "Users weren't disengaged — they were actively evaluating. The friction came from missing information and how decision-critical data was structured and surfaced." },
+        ],
       },
       {
         id: 'current-state',
         label: 'Benchmarking',
-        heading: 'Understanding the current state',
-        body: [
-          'A heuristic evaluation applied established usability principles to surface where the existing PDP fell short.',
-          'A competitive benchmark against category leaders made the gap concrete.',
+        heading: [{ t: 'UNDERSTANDING THE ' }, { t: 'CURRENT STATE', gold: true }],
+        intro: [
+          { type: 'paragraphs', items: [
+            'A heuristic evaluation applied established usability principles to surface where the existing PDP fell short.',
+            'A competitive benchmark against category leaders made the gap concrete.',
+          ] },
         ],
-        principles: [
-          { label: 'INDUSTRY LEADERS', quote: 'Shade swatches sit right beside the product imagery, pricing breaks down clearly (MRP vs. discount), and user-generated content lives next to the decision point.' },
-          { label: 'PILGRIM TODAY', quote: 'Shade selection is separated from the imagery, the visual hierarchy is fragmented, and social proof barely shows up — the right pieces, in the wrong order.' },
+        bodyGap: 24,
+        blocks: [
+          { type: 'cards', columns: 2, variant: 'text', items: [
+            { label: 'INDUSTRY LEADERS', value: 'Shade swatches sit right beside the product imagery, pricing breaks down clearly (MRP vs. discount), and user-generated content lives next to the decision point.' },
+            { label: 'PILGRIM TODAY', value: 'Shade selection is separated from the imagery, the visual hierarchy is fragmented, and social proof barely shows up — the right pieces, in the wrong order.' },
+          ] },
+          { type: 'paragraphs', items: ['The opportunity was structural reorganisation, not a cosmetic refresh.'] },
         ],
-        afterBody: 'The opportunity was structural reorganisation, not a cosmetic refresh.',
       },
       {
         id: 'research',
         label: 'Research',
-        heading: 'What twenty conversations revealed',
-        body: ['In collaboration with Pilgrim\'s research team, we ran a behavioural study with ~20 users — mapping the real pre-purchase journey and the decision levers behind conversion.'],
-        principles: [
-          { label: 'NON-LINEAR JOURNEY', quote: 'Buying happens in loops — inspiration, evaluation, validation, comparison — not a straight line to checkout. The loops get longer as comfort with online beauty grows.' },
-          { label: 'HIGH SUPPORT NEEDS', quote: 'Users seek external validation — YouTube and Instagram tutorials, reviews, demos — to build the confidence to buy.' },
-          { label: 'BRAND LOYALTY', quote: 'People lean on brands they\'ve used before. Without a physical trial, experimenting online feels personally risky.' },
-          { label: 'PRICE & PROOF', quote: 'Offers and discounts pull purchases online over retail. Ratings and reviews act as the confirmation layer for authenticity and performance.' },
+        heading: [{ t: 'WHAT TWENTY CONVERSATIONS ' }, { t: 'REVEALED', gold: true }],
+        intro: [
+          { type: 'paragraphs', items: ["In collaboration with Pilgrim's research team, we ran a behavioural study with ~20 users — mapping the real pre-purchase journey and the decision levers behind conversion."] },
         ],
-        images: ['/makeup-journey.png'],
-        imageCaption: 'The pre-purchase journey is a loop, not a line — users move between inspiration, evaluation, validation, and comparison before committing.',
+        bodyGap: 24,
+        blocks: [
+          { type: 'cards', columns: 2, variant: 'text', items: [
+            { label: 'NON-LINEAR JOURNEY', value: 'Buying happens in loops — inspiration, evaluation, validation, comparison — not a straight line to checkout. The loops get longer as comfort with online beauty grows.' },
+            { label: 'HIGH SUPPORT NEEDS', value: 'Users seek external validation — YouTube and Instagram tutorials, reviews, demos — to build the confidence to buy.' },
+            { label: 'BRAND LOYALTY', value: "People lean on brands they've used before. Without a physical trial, experimenting online feels personally risky." },
+            { label: 'PRICE & PROOF', value: 'Offers and discounts pull purchases online over retail. Ratings and reviews act as the confirmation layer for authenticity and performance.' },
+          ] },
+          { type: 'image', src: '/makeup-journey.png', alt: 'The pre-purchase journey loop', caption: 'The pre-purchase journey is a loop, not a line — users move between inspiration, evaluation, validation, and comparison before committing.' },
+        ],
       },
       {
         id: 'synthesis',
         label: 'Synthesis',
-        heading: 'The PDP was the highest-friction point',
-        body: [
-          'Putting it together — funnel metrics, the usability audit, competitive research, and the qualitative findings — all four lenses pointed to the same place. The product page was where the journey broke.',
+        heading: [{ t: 'THE PDP WAS THE ' }, { t: 'HIGHEST-FRICTION POINT', gold: true }],
+        intro: [
+          { type: 'paragraphs', items: ['Putting it together — funnel metrics, the usability audit, competitive research, and the qualitative findings — all four lenses pointed to the same place. The product page was where the journey broke.'] },
         ],
-        callout: 'Users evaluating shade-based beauty products hit cognitive friction from poor information hierarchy, unclear shade interaction, and fragmented pricing and validation cues — and dropped off before Add-to-Cart.',
+        blocks: [
+          { type: 'callout', style: 'bar', body: 'Users evaluating shade-based beauty products hit cognitive friction from poor information hierarchy, unclear shade interaction, and fragmented pricing and validation cues — and dropped off before Add-to-Cart.' },
+        ],
       },
       {
         id: 'hypothesis',
         label: 'Hypothesis',
-        heading: 'Four bets to test',
-        body: ['Before redesigning, we defined measurable hypotheses:'],
-        hypotheses: {
-          icon: '📈',
-          items: [
+        heading: [{ t: 'FOUR BETS ' }, { t: 'TO TEST', gold: true }],
+        intro: [
+          { type: 'paragraphs', items: ['Before redesigning, we defined measurable hypotheses:'] },
+        ],
+        bodyGap: 24,
+        blocks: [
+          { type: 'infoBox', icon: '📈', items: [
             'H1: Clearer shade visualisation will increase conversion.',
             'H2: Pricing transparency will improve Add-to-Cart rate.',
             'H3: Early surfacing of social proof will reduce hesitation.',
             'H4: Contextual grouping of information will reduce cognitive load.',
-          ],
-        },
-        callout: 'Constraints: a 15-day A/B-testing window, and no AR try-on infrastructure available.',
+          ] },
+          { type: 'callout', style: 'bar', body: 'Constraints: a 15-day A/B-testing window, and no AR try-on infrastructure available.' },
+        ],
       },
       {
         id: 'process',
         label: 'Process',
-        heading: 'Five steps to the redesign',
-        body: ['From understanding the existing structure to a tested final design.'],
-        subsections: [
+        heading: [{ t: 'FIVE STEPS TO THE ' }, { t: 'REDESIGN', gold: true }],
+        intro: [
+          { type: 'paragraphs', items: ['From understanding the existing structure to a tested final design.'] },
+        ],
+        bodyGap: 40,
+        blocks: [
           {
-            subheading: '1 — Map the existing structure',
-            paragraph: 'The original PDP presented information in the following order:',
-            pills: ['Product imagery', 'Product name & price', 'Shade selection section', 'Offer section', 'Key product benefits', 'Try shade filter section', 'Product details', 'Brand code', 'FAQs', 'Ratings & Reviews', 'Continue Browsing section'],
-            phones: ['/makeup-original-1.png', '/makeup-original-2.png', '/makeup-original-3.png'],
+            type: 'group',
+            gap: 16,
+            blocks: [
+              { type: 'group', gap: 4, blocks: [
+                { type: 'subheading', text: '1 — Map the existing structure' },
+                { type: 'paragraphs', items: ['The original PDP presented information in the following order:'] },
+              ] },
+              { type: 'pills', items: ['Product imagery', 'Product name & price', 'Shade selection section', 'Offer section', 'Key product benefits', 'Try shade filter section', 'Product details', 'Brand code', 'FAQs', 'Ratings & Reviews', 'Continue Browsing section'] },
+              { type: 'phones', items: ['/makeup-original-1.png', '/makeup-original-2.png', '/makeup-original-3.png'] },
+            ],
           },
           {
-            subheading: '2 — Identifying the information gap',
-            paragraph: 'A gap analysis was conducted between:',
-            bullets: ['What users needed to decide', 'What the page emphasized'],
-            box: {
-              icon: '🧩',
-              items: [
+            type: 'group',
+            gap: 16,
+            blocks: [
+              { type: 'group', gap: 4, blocks: [
+                { type: 'subheading', text: '2 — Identifying the information gap' },
+                { type: 'paragraphs', items: ['A gap analysis was conducted between:'] },
+              ] },
+              { type: 'list', items: ['What users needed to decide', 'What the page emphasized'] },
+              { type: 'infoBox', icon: '🧩', items: [
                 'Shade selection was visually disconnected from imagery, increasing cognitive effort.',
                 'Social proof appeared too late in the hierarchy.',
                 'Pricing clarity required mental calculation due to fragmented presentation.',
                 'Secondary information appeared before decision-critical information.',
-              ],
-            },
-          },
-          {
-            subheading: '3 — Prioritise the information',
-            paragraph: 'Card-sorting with multiple users, plus offline experience analysis, set the section hierarchy and defined what each component had to carry. It sorted into three tiers:',
-            tiers: [
-              {
-                icon: '🔥',
-                label: 'Priority',
-                items: ['Product Imagery', 'Product name & price', 'Shade selection', 'Color based grouping', 'Offers & best price', 'Offers & reviews', 'Shade-level context', 'Key product benefits', 'Add to Cart', 'Delivery details'],
-              },
-              {
-                icon: '📌',
-                label: 'Must have',
-                items: ['Virtual try-on', 'UGC videos', 'Social proof', 'Product details', 'Ingredients', 'How to use', 'Brand information'],
-              },
-              {
-                icon: '⭐',
-                label: 'Good to have',
-                items: ['Brand code', 'Complementary products', 'Shop the look', 'Build-your-own combo', 'Shop by product type & category'],
-              },
+              ] },
             ],
           },
           {
-            subheading: '4 — Prototypes & user feedback',
-            introBox: {
-              icon: '🧠',
-              items: ['To ensure a truly impactful and intuitive experience, we focused on validating design assumptions and extracting actionable insights through rigorous testing.'],
-            },
-            bullets: [
-              'The **focus was on user inputs** during the initial shaping of ideas.',
-              '**Validate** the design assumptions and get **actionable insights** for a better user experience.',
-              '**Think-aloud feedback sessions** in which users verbalised their thoughts while using the product — to understand their thoughts and feelings throughout.',
+            type: 'group',
+            gap: 16,
+            blocks: [
+              { type: 'group', gap: 4, blocks: [
+                { type: 'subheading', text: '3 — Prioritise the information' },
+                { type: 'paragraphs', items: ['Card-sorting with multiple users, plus offline experience analysis, set the section hierarchy and defined what each component had to carry. It sorted into three tiers:'] },
+              ] },
+              { type: 'tiers', items: [
+                { icon: '🔥', label: 'Priority', items: ['Product Imagery', 'Product name & price', 'Shade selection', 'Color based grouping', 'Offers & best price', 'Offers & reviews', 'Shade-level context', 'Key product benefits', 'Add to Cart', 'Delivery details'] },
+                { icon: '📌', label: 'Must have', items: ['Virtual try-on', 'UGC videos', 'Social proof', 'Product details', 'Ingredients', 'How to use', 'Brand information'] },
+                { icon: '⭐', label: 'Good to have', items: ['Brand code', 'Complementary products', 'Shop the look', 'Build-your-own combo', 'Shop by product type & category'] },
+              ] },
             ],
-            button: { icon: '📝', label: 'View detailed user feedbacks', href: 'https://opaque-zucchini-598.notion.site/User-Feedback-31396fcc75468080aea3e4ca36f37bed?pvs=143' },
           },
           {
-            subheading: '5 — Superfinal_final final design',
-            paragraph: 'The redesigned PDP, reorganised around the decision — each choice annotated against the user need it answers.',
-            annotatedDesign: {
-              image: '/makeup-pdp.png',
-              alt: 'Redesigned Pilgrim makeup product detail page',
-              annotations: [
-                { side: 'right', top: '2%',    law: 'VISUAL PROXIMITY',              body: '“Everything I need to decide is right here.”' },
-                { side: 'left',  top: '8.5%',  law: 'RISK REDUCTION',                body: '“I want to see how it looks before committing.”' },
-                { side: 'right', top: '9.5%',  law: 'SOCIAL PROOF',                  body: '“If so many people bought this, it must be worth it.”' },
-                { side: 'left',  top: '12.5%', law: 'CONTEXTUAL DECISION MAKING',    body: 'Shade selection placed next to the product image. Faster comparison, less scrolling.' },
-                { side: 'left',  top: '17.5%', law: 'PRICING TRANSPARENCY',          body: '“Just tell me what I’ll actually pay.”' },
-                { side: 'right', top: '22%',   law: 'PERCEIVED VALUE & USER CONTROL',body: 'For Pilgrim’s frequent BUY2 offers, while giving users control.' },
-                { side: 'right', top: '25.7%', law: 'EXPECTATION SETTING',           body: 'PIN code check and timelines. No surprises post add-to-cart.' },
-                { side: 'left',  top: '27.5%', law: 'CREDIBILITY & TRUST SIGNALS',   body: '“I want to know what goes on my skin is safe.”' },
-                { side: 'right', top: '30%',   law: 'VISUAL VALIDATION',             body: '“I need to understand texture, finish, and payoff.”' },
-                { side: 'left',  top: '37%',   law: 'SCANNABILITY',                  body: 'Makes key product benefits easy to scan and remember.' },
-                { side: 'right', top: '46%',   law: 'PROGRESSIVE DISCLOSURE',        body: 'Structured information, for when users want to go deeper.' },
-                { side: 'left',  top: '59%',   law: 'CROSS-SELL',                    body: 'Enables users to visualise outcomes and discover complementary products.' },
-                { side: 'right', top: '63.5%', law: 'COGNITIVE LOAD REDUCTION',      body: '“Tell me what people are mostly saying.”' },
-                { side: 'left',  top: '83%',   law: 'SEAMLESS CONTINUITY',           body: 'Continue browsing without drop-offs.' },
-              ],
-            },
+            type: 'group',
+            gap: 16,
+            blocks: [
+              { type: 'subheading', text: '4 — Prototypes & user feedback' },
+              { type: 'infoBox', icon: '🧠', items: ['To ensure a truly impactful and intuitive experience, we focused on validating design assumptions and extracting actionable insights through rigorous testing.'] },
+              { type: 'list', items: [
+                'The **focus was on user inputs** during the initial shaping of ideas.',
+                '**Validate** the design assumptions and get **actionable insights** for a better user experience.',
+                '**Think-aloud feedback sessions** in which users verbalised their thoughts while using the product — to understand their thoughts and feelings throughout.',
+              ] },
+              { type: 'button', icon: '📝', label: 'View detailed user feedbacks', href: 'https://opaque-zucchini-598.notion.site/User-Feedback-31396fcc75468080aea3e4ca36f37bed?pvs=143' },
+            ],
+          },
+          {
+            type: 'group',
+            gap: 16,
+            blocks: [
+              { type: 'group', gap: 4, blocks: [
+                { type: 'subheading', text: '5 — Superfinal_final final design' },
+                { type: 'paragraphs', items: ['The redesigned PDP, reorganised around the decision — each choice annotated against the user need it answers.'] },
+              ] },
+              { type: 'annotatedDesign',
+                image: '/makeup-pdp.png',
+                alt: 'Redesigned Pilgrim makeup product detail page',
+                annotations: [
+                  { side: 'right', top: '2%',    law: 'VISUAL PROXIMITY',              body: '“Everything I need to decide is right here.”' },
+                  { side: 'left',  top: '8.5%',  law: 'RISK REDUCTION',                body: '“I want to see how it looks before committing.”' },
+                  { side: 'right', top: '9.5%',  law: 'SOCIAL PROOF',                  body: '“If so many people bought this, it must be worth it.”' },
+                  { side: 'left',  top: '12.5%', law: 'CONTEXTUAL DECISION MAKING',    body: 'Shade selection placed next to the product image. Faster comparison, less scrolling.' },
+                  { side: 'left',  top: '17.5%', law: 'PRICING TRANSPARENCY',          body: '“Just tell me what I’ll actually pay.”' },
+                  { side: 'right', top: '22%',   law: 'PERCEIVED VALUE & USER CONTROL',body: 'For Pilgrim’s frequent BUY2 offers, while giving users control.' },
+                  { side: 'right', top: '25.7%', law: 'EXPECTATION SETTING',           body: 'PIN code check and timelines. No surprises post add-to-cart.' },
+                  { side: 'left',  top: '27.5%', law: 'CREDIBILITY & TRUST SIGNALS',   body: '“I want to know what goes on my skin is safe.”' },
+                  { side: 'right', top: '30%',   law: 'VISUAL VALIDATION',             body: '“I need to understand texture, finish, and payoff.”' },
+                  { side: 'left',  top: '37%',   law: 'SCANNABILITY',                  body: 'Makes key product benefits easy to scan and remember.' },
+                  { side: 'right', top: '46%',   law: 'PROGRESSIVE DISCLOSURE',        body: 'Structured information, for when users want to go deeper.' },
+                  { side: 'left',  top: '59%',   law: 'CROSS-SELL',                    body: 'Enables users to visualise outcomes and discover complementary products.' },
+                  { side: 'right', top: '63.5%', law: 'COGNITIVE LOAD REDUCTION',      body: '“Tell me what people are mostly saying.”' },
+                  { side: 'left',  top: '83%',   law: 'SEAMLESS CONTINUITY',           body: 'Continue browsing without drop-offs.' },
+                ],
+              },
+            ],
           },
         ],
       },
       {
         id: 'results',
         label: 'Outcomes',
-        heading: 'What fifteen days proved',
-        subheading: 'A/B test (15 days)',
-        body: ['Days 1–5: gradual rollout at 90% control / 10% variant. Days 6–15: a balanced 50/50 split.'],
-        impactHeading: 'Measured outcomes',
-        impact: [
-          { value: '4.2%', label: 'Conversion rate' },
-          { value: '2.4%', label: 'Add-to-cart rate' },
-          { value: '1.4%', label: 'Average order value' },
-          { value: '4.8%', label: 'Click-through rate' },
+        heading: [{ t: 'WHAT FIFTEEN DAYS ' }, { t: 'PROVED', gold: true }],
+        bodyGap: 24,
+        blocks: [
+          {
+            type: 'group',
+            gap: 8,
+            blocks: [
+              { type: 'subheading', text: 'A/B TEST (15 DAYS)' },
+              { type: 'paragraphs', items: ['Days 1–5: gradual rollout at 90% control / 10% variant. Days 6–15: a balanced 50/50 split.'] },
+            ],
+          },
+          {
+            type: 'group',
+            gap: 16,
+            blocks: [
+              { type: 'subheading', text: 'MEASURED OUTCOMES' },
+              { type: 'cards', columns: 4, variant: 'metric', items: [
+                { label: 'Conversion rate', value: '+4.2%' },
+                { label: 'Add-to-cart rate', value: '+2.4%' },
+                { label: 'Average order value', value: '+1.4%' },
+                { label: 'Click-through rate', value: '+4.8%' },
+              ] },
+            ],
+          },
         ],
       },
       {
         id: 'next',
         label: 'Reflection',
-        heading: 'Where this goes next',
-        bullets: [
-          'Roll the validated PDP patterns across the entire beauty category as one coherent, category-specific experience.',
-          'Layer in richer outcome visualisation as try-on infrastructure becomes available — the research showed users want to see the result before committing.',
+        heading: [{ t: 'WHERE THIS ' }, { t: 'GOES NEXT', gold: true }],
+        bodyGap: 24,
+        blocks: [
+          { type: 'list', items: [
+            'Roll the validated PDP patterns across the entire beauty category as one coherent, category-specific experience.',
+            'Layer in richer outcome visualisation as try-on infrastructure becomes available — the research showed users want to see the result before committing.',
+          ] },
         ],
       },
     ],

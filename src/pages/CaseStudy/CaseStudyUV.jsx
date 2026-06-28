@@ -9,7 +9,7 @@ import styles from './CaseStudyUV.module.css'
    ────────────────────────────────────────────────────────────── */
 export default function UVBody({ project, theme }) {
   return (
-    <div className={styles.uvBody}>
+    <div className={`${styles.uvBody} ${project.accentTheme === 'steel' ? styles.steel : ''}`}>
       {project.headerImage && (
         <div className={styles.banner}>
           <div className={styles.bannerText}>
@@ -169,9 +169,140 @@ function Block({ block }) {
       return <Gate block={block} />
     case 'offerMap':
       return <OfferMap rows={block.rows} />
+    case 'image':
+      return <Figure block={block} />
+    case 'phones':
+      return <Phones items={block.items} />
+    case 'infoBox':
+      return <InfoBox block={block} />
+    case 'pills':
+      return <Pills items={block.items} />
+    case 'tiers':
+      return <Tiers items={block.items} />
+    case 'button':
+      return <LinkButton block={block} />
+    case 'annotatedDesign':
+      return <AnnotatedDesign design={block} />
     default:
       return null
   }
+}
+
+function Figure({ block }) {
+  return (
+    <figure className={styles.figure}>
+      <img src={block.src} alt={block.alt || ''} className={styles.figureImg} />
+      {block.caption && <figcaption className={styles.figureCaption}>{block.caption}</figcaption>}
+    </figure>
+  )
+}
+
+function Phones({ items }) {
+  return (
+    <div className={styles.phones}>
+      {items.map((src, i) => (
+        <img key={i} src={src} alt="" className={styles.phoneShot} />
+      ))}
+    </div>
+  )
+}
+
+function InfoBox({ block }) {
+  return (
+    <div className={styles.infoBox}>
+      {block.icon && <span className={styles.infoBoxIcon} aria-hidden>{block.icon}</span>}
+      <ul className={styles.infoBoxList}>
+        {block.items.map((it, i) => (
+          <li key={i} className={styles.infoBoxItem}><RichText text={it} /></li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+function Pills({ items }) {
+  return (
+    <div className={styles.pills}>
+      {items.map((p, i) => (
+        <span key={i} className={styles.pill}>{p}</span>
+      ))}
+    </div>
+  )
+}
+
+function Tiers({ items }) {
+  return (
+    <div className={styles.tiers}>
+      {items.map((tier, i) => (
+        <div key={i} className={styles.tier}>
+          <span className={styles.tierLabel}>
+            <span className={styles.tierIcon} aria-hidden>{tier.icon}</span>
+            {tier.label}
+          </span>
+          <div className={styles.pills}>
+            {tier.items.map((item, j) => (
+              <span key={j} className={styles.pill}>{item}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function LinkButton({ block }) {
+  const external = block.href && block.href !== '#'
+  return (
+    <a
+      href={block.href || '#'}
+      className={styles.linkButton}
+      {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
+    >
+      {block.icon && <span aria-hidden>{block.icon}</span>}
+      {block.label}
+    </a>
+  )
+}
+
+function AnnotatedDesign({ design }) {
+  const left = design.annotations.filter((a) => a.side === 'left')
+  const right = design.annotations.filter((a) => a.side === 'right')
+
+  return (
+    <div className={styles.annotated}>
+      <div className={styles.annotatedSide} data-side="left">
+        {left.map((a, i) => (
+          <div key={i} className={styles.annotatedNote} style={{ top: a.top }}>
+            <span className={styles.annotationLaw}>{a.law}</span>
+            <p className={styles.annotationBody}>{a.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className={styles.annotatedCenter}>
+        <img src={design.image} alt={design.alt || ''} className={styles.annotatedImg} />
+      </div>
+
+      <div className={styles.annotatedSide} data-side="right">
+        {right.map((a, i) => (
+          <div key={i} className={styles.annotatedNote} style={{ top: a.top }}>
+            <span className={styles.annotationLaw}>{a.law}</span>
+            <p className={styles.annotationBody}>{a.body}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Mobile fallback: annotations listed below the design */}
+      <ol className={styles.annotatedMobile}>
+        {design.annotations.map((a, i) => (
+          <li key={i}>
+            <span className={styles.annotationLaw}>{a.law}</span>
+            <p className={styles.annotationBody}>{a.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  )
 }
 
 function Cards({ block }) {
@@ -235,7 +366,7 @@ function Callout({ block }) {
     <div className={`${styles.callout} ${styles.calloutBar}`}>
       <span className={styles.calloutBarLine} aria-hidden />
       <div className={styles.calloutBarText}>
-        <p className={styles.calloutBarTitle}>{block.title}</p>
+        {block.title && <p className={styles.calloutBarTitle}>{block.title}</p>}
         {block.body && <p className={styles.calloutBarBody}>{block.body}</p>}
       </div>
     </div>
