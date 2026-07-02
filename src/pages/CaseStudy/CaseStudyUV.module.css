@@ -33,6 +33,8 @@
   --uv-inset-border-strong: rgba(255, 255, 255, 0.09);
   --uv-offer-header-muted: #ababab;
   --uv-offer-empty: rgba(255, 255, 255, 0.05);
+  --uv-donut-track: rgba(255, 255, 255, 0.08);
+  --uv-good: #22c9a0;
 }
 
 :global([data-theme="light"]) .uvBody {
@@ -61,6 +63,8 @@
   --uv-inset-border-strong: rgba(0, 0, 0, 0.1);
   --uv-offer-header-muted: #666;
   --uv-offer-empty: rgba(0, 0, 0, 0.15);
+  --uv-donut-track: rgba(0, 0, 0, 0.08);
+  --uv-good: #0a9d7c;
 }
 
 /* ── Steel accent variant (pre-purchase case study) ──
@@ -81,6 +85,70 @@
   --uv-tint-strong: rgba(2, 184, 204, 0.16);
   --uv-keyword-border: rgba(6, 112, 125, 0.4);
   --uv-keyword-shadow: rgba(6, 112, 125, 0.12);
+}
+/* ── DigiYatra accent variant (brand violet) ── */
+.digi {
+  --uv-gold: #7a52ff;
+  --uv-gold-bright: #c2b0ff;
+  --uv-tint: rgba(101, 54, 230, 0.06);
+  --uv-tint-strong: rgba(101, 54, 230, 0.16);
+  --uv-keyword-border: rgba(101, 54, 230, 0.5);
+  --uv-keyword-shadow: rgba(101, 54, 230, 0.3);
+}
+:global([data-theme="light"]) .digi {
+  --uv-gold: #5b2fd6;
+  --uv-gold-bright: #4a25b0;
+  --uv-tint: rgba(101, 54, 230, 0.08);
+  --uv-tint-strong: rgba(101, 54, 230, 0.16);
+  --uv-keyword-border: rgba(101, 54, 230, 0.4);
+  --uv-keyword-shadow: rgba(101, 54, 230, 0.12);
+}
+
+/* ────────────────────────────────────────────────────────────
+   Surface borders — one treatment shared by all three case
+   studies (default / steel / digi). Only the theme changes it,
+   never the accent variant:
+     · Dark mode  → bordered surfaces (base rules further down)
+     · Light mode → borderless surfaces (this rule)
+   Accent colour still differs per variant; the UI does not.
+   Header banners keep their border in both themes (excluded here).
+   ──────────────────────────────────────────────────────────── */
+:global([data-theme="light"]) .uvBody .card,
+:global([data-theme="light"]) .uvBody .persona,
+:global([data-theme="light"]) .uvBody .callout,
+:global([data-theme="light"]) .uvBody .journeyNode,
+:global([data-theme="light"]) .uvBody .variant,
+:global([data-theme="light"]) .uvBody .variantBadge,
+:global([data-theme="light"]) .uvBody .finalCard,
+:global([data-theme="light"]) .uvBody .infoBox,
+:global([data-theme="light"]) .uvBody .pill,
+:global([data-theme="light"]) .uvBody .tableScroll,
+:global([data-theme="light"]) .uvBody .metricCard,
+:global([data-theme="light"]) .uvBody .noteCardsBordered .noteCard,
+:global([data-theme="light"]) .uvBody .donutCard,
+:global([data-theme="light"]) .uvBody .gapCard,
+:global([data-theme="light"]) .uvBody .pullQuote,
+:global([data-theme="light"]) .uvBody .hta,
+:global([data-theme="light"]) .uvBody .personaCard,
+:global([data-theme="light"]) .uvBody .noteBox {
+  border: none;
+}
+
+/* ── Bare banner (full-bleed slide, no text overlay) ── */
+.bannerBare {
+  width: 100%;
+  height: 432px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--uv-border-subtle);
+  background: var(--uv-banner-bg);
+}
+.bannerBare img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* ── Banner ── */
@@ -411,6 +479,20 @@
   line-height: 1.4;
   color: var(--uv-strong);
 }
+/* Hook callout — big white statement on top, small accent line below */
+.calloutHookTitle {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
+  color: var(--uv-strong);
+}
+.calloutHookSub {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--uv-gold-bright);
+}
 .calloutIcon {
   gap: 12px;
   padding: 20px 24px;
@@ -507,7 +589,7 @@
 /* ── Variants (design exploration) ── */
 .variants {
   display: grid;
-  grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+  grid-template-columns: var(--tmpl, repeat(var(--cols, 3), minmax(0, 1fr)));
   gap: 16px;
 }
 .variant {
@@ -794,15 +876,15 @@
 /* ── Phone mockup row ── */
 .phones {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
-  gap: 24px;
+  gap: 8px;
+  align-items: flex-start;
 }
 .phoneShot {
-  height: 480px;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
+  flex: 1 1 0;
+  min-width: 0;
+  height: auto;
   border-radius: 16px;
 }
 
@@ -850,6 +932,11 @@
   font-size: 14px;
   color: var(--uv-body);
   white-space: nowrap;
+}
+.pillNum {
+  color: var(--uv-gold);
+  font-weight: 700;
+  margin-right: 8px;
 }
 
 /* ── Priority tiers ── */
@@ -1119,7 +1206,8 @@
     gap: 16px;
   }
 
-  .phoneShot { height: auto; width: 46%; }
+  .phones { flex-wrap: wrap; gap: 24px; }
+  .phoneShot { flex: 0 0 46%; height: auto; }
   .tier { grid-template-columns: 1fr; gap: 12px; }
   .tierLabel { padding-top: 0; }
 }
@@ -1151,4 +1239,611 @@
     flex-direction: column;
     gap: 5px;
   }
+}
+
+/* ── Data table (HTA issues, eye-tracking, comparisons) ── */
+.tableWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.tableCaption {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--uv-muted);
+}
+.tableScroll {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--uv-card-border);
+  border-radius: 14px;
+  background: var(--uv-card-bg);
+}
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--uv-body);
+}
+.dataTable thead th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--uv-muted);
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--uv-card-border);
+  white-space: nowrap;
+}
+.dataTable tbody td {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--uv-inset-border);
+  vertical-align: top;
+}
+.dataTable tbody tr:last-child td {
+  border-bottom: none;
+}
+.tableCellFirst {
+  color: var(--uv-strong);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.tableCellBadge {
+  white-space: nowrap;
+}
+.sevBadge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+}
+.sev_critical {
+  color: var(--uv-gate-red);
+  background: color-mix(in srgb, var(--uv-gate-red) 12%, transparent);
+}
+.sev_high {
+  color: var(--uv-gold);
+  background: var(--uv-tint-strong);
+}
+.sev_medium {
+  color: var(--uv-muted);
+  background: var(--uv-offer-empty);
+}
+
+/* ════════════════════════════════════════════════════════════
+   DigiYatra "Phase 1" blocks (violet accent, research-led)
+   ════════════════════════════════════════════════════════════ */
+
+/* Larger section headings to match the DigiYatra frame */
+.digi .heading {
+  font-size: 30px;
+  line-height: 1.3;
+  letter-spacing: -0.4px;
+}
+
+/* Micro label — small uppercase sublabel (white) */
+.microLabel {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--uv-strong);
+  line-height: 1.4;
+}
+
+/* Lens title — "1. Survey" etc. */
+.lensTitle {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--uv-strong);
+}
+
+/* Metric cards (value first, accent label below) */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+  gap: 16px;
+}
+.metricCard {
+  background: var(--uv-card-bg);
+  border: 1px solid var(--uv-card-border);
+  border-radius: 8px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.metricValue {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--uv-strong);
+}
+.metricLabel {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--uv-gold-bright);
+}
+
+/* Note cards — labelled grid (literature, objective, problems, bets, takeaways) */
+.noteCards {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+  gap: 16px;
+}
+.noteCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.noteCardsBordered .noteCard {
+  background: var(--uv-card-bg);
+  border: 1px solid var(--uv-card-border);
+  border-radius: 8px;
+  padding: 16px;
+}
+.noteCardNum {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--uv-gold);
+}
+.noteCardLabel {
+  display: inline-flex;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--uv-gold-bright);
+  line-height: 1.3;
+}
+.noteCardBracket {
+  color: var(--uv-gold);
+}
+.noteCardTitle {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--uv-strong);
+}
+.noteCardBody {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--uv-body);
+}
+
+/* Donut charts (survey) */
+.donuts {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr));
+  gap: 16px;
+}
+.donutCard {
+  background: var(--uv-card-bg);
+  border: 1px solid var(--uv-card-border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.donutRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.donutSvg {
+  width: 118px;
+  height: 118px;
+  flex-shrink: 0;
+}
+.donutTotalLabel {
+  font-size: 5px;
+  fill: var(--uv-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.donutTotalValue {
+  font-size: 11px;
+  font-weight: 700;
+  fill: var(--uv-strong);
+}
+.donutLegend {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  flex: 1 1 0;
+  min-width: 0;
+}
+.donutLegendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.donutSwatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.donutLegendLabel {
+  font-size: 13px;
+  color: var(--uv-body);
+  flex: 1 1 0;
+  min-width: 0;
+}
+.donutLegendValue {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--uv-strong);
+}
+.donutCaption {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--uv-body);
+}
+
+/* Gap cards (mental-model) */
+.gapCards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.gapCard {
+  background: var(--uv-card-bg);
+  border: 1px solid var(--uv-card-border);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.gapCardTitle {
+  font-size: 15px;
+  font-weight: 700;
+}
+.gapGood {
+  color: var(--uv-good);
+}
+.gapBad {
+  color: var(--uv-gate-red);
+}
+.gapList {
+  margin: 0;
+  padding-left: 20px;
+  list-style: disc;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.gapList li {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--uv-body);
+}
+.gapList li::marker {
+  color: var(--uv-muted);
+}
+
+/* Pull quote */
+.pullQuote {
+  background: var(--uv-card-bg);
+  border: 1px solid var(--uv-card-border);
+  border-radius: 16px;
+  padding: 36px 32px;
+  margin: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.pullQuoteText {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 26px;
+  line-height: 1.35;
+  color: var(--uv-strong);
+}
+.pullQuoteCite {
+  font-size: 14px;
+  color: var(--uv-muted);
+}
+
+/* HTA hierarchy */
+.hta {
+  background: var(--uv-card-bg);
+  border: 1px solid var(--uv-card-border);
+  border-radius: 12px;
+  padding: 4px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.htaRow {
+  display: flex;
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--uv-inset-border);
+}
+.htaRow:last-child {
+  border-bottom: none;
+}
+.htaNum {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--uv-gold);
+  width: 16px;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.htaText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.htaTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--uv-strong);
+  line-height: 1.4;
+}
+.htaDetail {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--uv-muted);
+  line-height: 1.4;
+}
+
+/* References */
+.references {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.referencesLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--uv-muted);
+}
+.referencesList {
+  margin: 0;
+  padding-left: 18px;
+  list-style: decimal;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.referencesList li {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--uv-muted);
+}
+.referencesList li::marker {
+  color: var(--uv-muted);
+}
+
+/* Persona cards (text only) */
+.personaCards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.personaCard {
+  background: var(--uv-card-bg);
+  border: 1px solid var(--uv-card-border);
+  border-radius: 8px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.personaCardHead {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.personaCardName {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--uv-strong);
+}
+.personaCardRole {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--uv-gold);
+}
+.personaCardQuote {
+  margin: 4px 0;
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--uv-strong);
+}
+.personaCardValues {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--uv-body);
+}
+.personaCardRisk {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--uv-muted);
+}
+
+/* Note box (eye-tracking close-up) */
+.noteBox {
+  background: var(--uv-card-bg);
+  border: 1px solid var(--uv-card-border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+/* Bare variant — plain text, no box chrome (any theme) */
+.noteBox.noteBoxBare {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+.noteBoxLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--uv-gold-bright);
+}
+.noteBoxBody {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--uv-body);
+}
+.noteBoxFoot {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--uv-strong);
+}
+
+/* Split image (why-it-matters context photo) */
+.splitImage {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: flex-start;
+}
+.splitImageText {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.splitImageMedia {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.splitImageMedia img {
+  width: 320px;
+  max-width: 40vw;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--uv-card-border);
+  display: block;
+}
+.splitImageCaption {
+  font-size: 12px;
+  color: var(--uv-muted);
+  text-align: center;
+}
+
+/* Callout: bulleted body + stat variant */
+.calloutBullets {
+  list-style: disc;
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.calloutBullets li {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--uv-body);
+}
+.calloutBullets li::marker {
+  color: var(--uv-gold);
+}
+.calloutStatTitle {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--uv-strong);
+}
+.calloutStatBody {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--uv-muted);
+}
+
+/* Full-width before/after strips (identity flow) */
+.variants[style*="--cols: 1"] .variantImage {
+  height: auto;
+  max-height: 420px;
+  width: 100%;
+}
+
+/* Multi-screen media row (clean individual frames) */
+.variantScreens {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+}
+.variantScreensFlow {
+  gap: 2px;
+}
+.variantScreen {
+  flex: 1 1 0;
+  min-width: 88px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.variantScreen img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+.variantScreenCaption {
+  font-size: 12.5px;
+  line-height: 1.35;
+  text-align: center;
+  color: var(--uv-body);
+}
+.variantScreenArrow {
+  flex: 0 0 auto;
+  align-self: center;
+  margin-top: 12%;
+  color: var(--uv-gold);
+  opacity: 0.8;
+}
+.variantScreenArrow svg {
+  width: 22px;
+  height: 10px;
+}
+@media (max-width: 640px) {
+  .variantScreen { min-width: 108px; }
+}
+
+/* ── Tablet / mobile for DigiYatra blocks ── */
+@media (max-width: 640px) {
+  .digi .heading { font-size: 22px; }
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .noteCards { grid-template-columns: 1fr; }
+  .donuts { grid-template-columns: 1fr; }
+  .gapCards { grid-template-columns: 1fr; }
+  .personaCards { grid-template-columns: 1fr; }
+  .splitImage { grid-template-columns: 1fr; gap: 20px; }
+  .splitImageMedia img { width: 100%; max-width: 100%; }
+  .pullQuoteText { font-size: 20px; }
+  .donutLegendLabel { font-size: 12px; }
 }

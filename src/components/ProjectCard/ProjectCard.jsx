@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useTheme } from '../../context/ThemeContext'
 import styles from './ProjectCard.module.css'
 
-export default function ProjectCard({ slug, title, tagline, category, thumbnail, thumbnailStyle, className, bgClassName, leftClassName, readTime, readTimeGradient }) {
+export default function ProjectCard({ slug, title, tagline, category, thumbnail, thumbnailStyle, className, bgClassName, leftClassName, readTime, readTimeGradient, accent }) {
   const navigate = useNavigate()
   const { theme } = useTheme()
   const cardRef = useRef(null)
@@ -54,7 +54,12 @@ export default function ProjectCard({ slug, title, tagline, category, thumbnail,
       {readTime && (
         <div
           className={[styles.cursorPill, hovered ? styles.cursorPillVisible : ''].join(' ')}
-          style={{ '--cx': `${pos.x}px`, '--cy': `${pos.y}px`, '--pill-bg': readTimeGradient || 'linear-gradient(180deg, #6E5DF6, #C68DF6)' }}
+          style={{
+            '--cx': `${pos.x}px`,
+            '--cy': `${pos.y}px`,
+            '--pill-bg': readTimeGradient || 'linear-gradient(180deg, #6E5DF6, #C68DF6)',
+            '--pill-accent': accent || '#6E5DF6',
+          }}
         >
           {readTime} Read
         </div>

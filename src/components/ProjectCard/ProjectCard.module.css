@@ -140,7 +140,7 @@
   font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
-  box-shadow: 0 4px 20px rgba(110, 93, 246, 0.45);
+  box-shadow: 0 2px 14px color-mix(in srgb, var(--pill-accent, #6E5DF6) 28%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;

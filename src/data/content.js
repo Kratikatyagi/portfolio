@@ -428,6 +428,497 @@ export const projects = [
       },
     ],
   },
+  {
+    slug: 'digiyatra',
+    layout: 'uv-v2',
+    accentTheme: 'digi',
+    title: 'Redesigning DigiYatra onboarding',
+    tagline: '',
+    readTime: '9m',
+    readTimeGradient: 'linear-gradient(180deg, #7a52ff, #3a1f8a)',
+    category: 'UX Research · Usability · 0→1 Redesign',
+    company: 'IDC IIT Bombay',
+    year: '2026',
+    accent: '#6536e6',
+    cardLabel: 'DigiYatra Onboarding',
+    cardHeadline: 'Cutting a 10-step identity flow in half',
+    cardDescription: "A usability-led redesign of DigiYatra airport onboarding — faster, clearer, and more trustworthy for first-time and elderly travellers.",
+    cardMetrics: [
+      { value: '−76%', label: 'Onboarding time' },
+      { value: '64 → 86', label: 'SUS score' },
+      { value: '10 → 5', label: 'Identity steps' },
+    ],
+    thumbnail: { dark: '/digi-banner-dark.png', light: '/digi-banner-light.png' },
+    thumbnailStyle: { height: '100%', width: '100%', objectFit: 'cover', objectPosition: 'center' },
+    thumbnailOverlay: null,
+    headerImage: {
+      dark: '/digi-banner-dark.png',
+      light: '/digi-banner-light.png',
+      subtitle: null,
+      keywords: ['UX Research', 'Onboarding Redesign', 'Usability Tested'],
+    },
+    sections: [
+      {
+        id: 'overview',
+        label: 'TL; DR',
+        heading: [{ t: 'Project ' }, { t: 'Overview', gold: true }],
+        intro: [
+          { type: 'lead', text: "DigiYatra promises a walk-through airport gate, but onboarding is long and anxious enough that many travellers give up partway. We took the flow apart with five research methods and traced every drop-off to two culprits: it is too complex, and people do not trust it. Then we rebuilt it to fix both." },
+        ],
+        bodyGap: 24,
+        blocks: [
+          { type: 'cards', columns: 3, variant: 'text', items: [
+            { label: 'My Role', value: 'Heuristic task analysis · UX/UI redesign · Usability & eye-tracking testing' },
+            { label: 'Timeline', value: '5 days · ~60 hours' },
+            { label: 'Platform', value: 'DigiYatra mobile app' },
+          ] },
+          { type: 'cards', columns: 2, variant: 'text', items: [
+            { label: 'Mentor', value: 'Prof. Swati Pal, IDC IIT Bombay' },
+            { label: 'Team', value: 'Sagar Pradhan · Kratika Tyagi · Humera Khan' },
+          ] },
+          { type: 'subheading', text: 'What the redesign moved' },
+          { type: 'metrics', columns: 3, items: [
+            { value: '4.5m → 1.07m', label: '~76% less time to onboard' },
+            { value: '64 → 86', label: 'SUS score, below-average to excellent' },
+            { value: '10 → 5 steps', label: 'To create your ID credential' },
+          ] },
+        ],
+      },
+      {
+        id: 'framing',
+        label: 'The framing',
+        heading: [{ t: 'Easy to believe in, hard to get through' }],
+        intro: [
+          { type: 'lead', text: "The pitch is simple: show your face, skip the queue. The problem is everything that has to happen before that gate, and how it feels along the way." },
+        ],
+        bodyGap: 16,
+        blocks: [
+          { type: 'subheading', text: 'Two things make people give up' },
+          { type: 'list', items: [
+            "**Complexity** — the flow is long: dozens of steps, two OTPs and a PIN before a first-timer can reach the gate.",
+            "**Trust** — it asks for your Aadhaar and your face, then never says where either one goes.",
+            "**The two feed each other** — a longer flow gives doubt more time to grow.",
+          ] },
+        ],
+      },
+      {
+        id: 'whymatters',
+        label: 'Why it matters',
+        heading: [{ t: "The barrier isn’t the technology" }],
+        headingGap: 24,
+        blocks: [
+          { type: 'splitImage',
+            paragraphs: ["DigiYatra is opt-in infrastructure meant for everyone, so it only works if people finish onboarding. Both our research and the literature say they stall for reasons that have nothing to do with the tech."],
+            src: '/digi-why-matters.png',
+            alt: 'DigiYatra e-gates at an Indian airport',
+          },
+          { type: 'microLabel', text: 'What the literature shows' },
+          { type: 'noteCards', columns: 2, numStyle: 'bracket', items: [
+            { num: '1', label: 'Adoption', body: 'Only ~22% opt in. Low awareness, a complex sign-up, and fear of misuse keep adoption thin.' },
+            { num: '2', label: 'Motivation', body: 'People trade privacy only when biometrics clearly help. Emotion drives the call.' },
+            { num: '3', label: 'Privacy', body: 'Many fear their face data is kept forever or used well beyond its stated purpose.' },
+            { num: '4', label: 'Reliability', body: 'Failed scans and errors push frustrated travellers to give up or ask for help.' },
+          ] },
+          { type: 'callout', style: 'bar', title: 'THE OPENING', body: "The fix isn’t better tech. It’s a better first ten minutes." },
+          { type: 'references', items: [
+            "George, A. Shaji et al. (2023). From Paperwork to Biometrics: Assessing the Digitization of Air Travel in India through DigiYatra.",
+            "Kassir, A. M. (2026). Passengers’ perceptions on the use of biometrics at airports: a statistical model of the extended theory of planned behavior. With Kasim, K. O. et al. (2021).",
+            "Gyanchandani et al. (2026). Balancing convenience and data privacy in the DigiYatra app.",
+            "Babaei & Vassileva (2025). Enhancing User Awareness of Manipulative Designs: persuasive strategies for mobile app platforms.",
+          ] },
+        ],
+      },
+      {
+        id: 'objective',
+        label: 'The objective',
+        heading: [{ t: 'Make the first ten minutes worth finishing' }],
+        intro: [
+          { type: 'lead', text: "One goal, two fronts: cut the effort onboarding takes, and close the trust gap that makes people hesitate, without weakening the security the system runs on." },
+        ],
+        bodyGap: 24,
+        blocks: [
+          { type: 'microLabel', text: 'What we set out to do' },
+          { type: 'noteCards', columns: 3, items: [
+            { label: 'Shorten the path', body: 'Fewer steps, fewer decisions, and less dead time before the gate.' },
+            { label: 'Build trust in plain sight', body: 'Say what data is taken, why, and where it stays, before the app asks for any of it.' },
+            { label: 'Stay safe and compliant', body: 'Every cut still respects the security rules and government checks the system depends on.' },
+          ] },
+          { type: 'callout', style: 'icon', label: 'How we would know it worked', body: 'Three yardsticks, set upfront: time to finish, usability (SUS), and how confident people felt about their data.' },
+        ],
+      },
+      {
+        id: 'approach',
+        label: 'The approach',
+        heading: [{ t: 'Five lenses, stacked' }],
+        intro: [
+          { type: 'lead', text: "No method tells the whole truth alone, so we layered five, each covering the others’ blind spots, all aimed at one flow: onboarding." },
+        ],
+        bodyGap: 32,
+        blocks: [
+          { type: 'microLabel', text: 'The five lenses' },
+
+          { type: 'group', gap: 16, blocks: [
+            { type: 'lensTitle', text: '1. Survey' },
+            { type: 'paragraphs', items: ['A wide read on how travellers feel about DigiYatra — before we talked to anyone.'] },
+            { type: 'microLabel', text: 'How we ran it' },
+            { type: 'list', items: [
+              '**20 respondents**, a mix of frequent and occasional flyers',
+              '**Distributed online** across traveller groups',
+              '**5 themes**: awareness, trust, privacy comfort, perceived ease, intent to use',
+            ] },
+            { type: 'microLabel', text: 'What it told us' },
+            { type: 'donuts', columns: 2, items: [
+              { caption: 'Q: Do you know what happens to your facial data after your journey?', segments: [
+                { label: 'No', value: 83, color: '#7a52ff' },
+                { label: 'Yes', value: 8, color: '#f5a623' },
+                { label: 'Not sure', value: 8, color: '#ff5a6e' },
+              ] },
+              { caption: 'Q: Convenience vs. privacy, which matters more?', segments: [
+                { label: 'Equally important', value: 50, color: '#7a52ff' },
+                { label: 'Convenience > privacy', value: 25, color: '#f5a623' },
+                { label: 'Privacy > convenience', value: 15, color: '#ff5a6e' },
+                { label: 'Convenience worth it', value: 10, color: '#22c9a0' },
+              ] },
+            ] },
+            { type: 'callout', style: 'icon', label: 'What the survey gave us', body: [
+              "**The block is trust, not usability**: the flow is fast and easy, yet 83% can’t see where their face data goes — and 75% wrongly believe it’s stored forever.",
+              "**Willingness is already there**: half weigh privacy and convenience equally, so winning confidence wins adoption.",
+            ] },
+          ] },
+
+          { type: 'group', gap: 16, blocks: [
+            { type: 'lensTitle', text: '2. Interviews' },
+            { type: 'paragraphs', items: ['Five semi-structured interviews across the adoption spectrum, to hear the why behind the numbers.'] },
+            { type: 'microLabel', text: 'How we ran it' },
+            { type: 'list', items: [
+              '**5 participants**, from an active user to non-users, aged 27 to 57',
+              '**Semi-structured**: awareness, trust, privacy, adoption, usefulness',
+              '**Affinity mapped** into five patterns and a mental-model gap',
+            ] },
+            { type: 'quote', text: 'Bohot lamba process tha, beech mein hi chhod diya.', cite: '“The process was too long — I gave up midway.” · Participant 2, 53, first-time user' },
+            { type: 'microLabel', text: 'The mental-model gap' },
+            { type: 'gapCards', items: [
+              { title: 'What they understand', tone: 'good', bullets: ['Faster airport access', 'Skip the queue', 'Face-based verification', 'Government-backed service'] },
+              { title: 'What they do not', tone: 'bad', bullets: ['Where their data is stored', 'How long it is kept', 'Who can access it', 'What consent allows', 'How to delete it'] },
+            ] },
+            { type: 'callout', style: 'icon', label: 'What the interviews told us', body: [
+              '**The data mental model is empty**: 5 of 5 could not say where their biometric data goes, how long it is kept, or who can access it.',
+              '**Friction is real and avoidable**: 4 of 5 stumbled on the DigiLocker versus Aadhaar choice, OTPs, and surprise screens.',
+            ] },
+          ] },
+
+          { type: 'group', gap: 16, blocks: [
+            { type: 'lensTitle', text: '3. Task analysis' },
+            { type: 'paragraphs', items: ['We broke “use DigiYatra” into every atomic step, from install to the gate, to see exactly where it breaks.'] },
+            { type: 'microLabel', text: 'How we ran it' },
+            { type: 'list', items: [
+              '**Hierarchical task analysis**: every atomic step from install to the gate',
+              '**13 friction points** in all, 11 of them within UI/UX scope',
+              '**2 technical defects** — an app crash and a broken Terms link — were flagged to engineering',
+            ] },
+            { type: 'microLabel', text: 'The task, decomposed' },
+            { type: 'hta', items: [
+              { n: '0', title: 'Complete DigiYatra airport entry', detail: 'Plan: do 1 → 2 → 3 → 4 in order' },
+              { n: '1', title: 'Install and set up the account' },
+              { n: '2', title: 'Create the ID credential', detail: 'ten steps · Aadhaar or DigiLocker path · two OTPs and a separate PIN' },
+              { n: '3', title: 'Upload the boarding pass' },
+              { n: '4', title: 'Scan face at the gate' },
+            ] },
+            { type: 'microLabel', text: 'The UI/UX issues it surfaced' },
+            { type: 'table',
+              head: ['#', 'Location in flow', 'Issue', 'Severity'],
+              colWidths: ['44px', '24%', 'auto', '110px'],
+              rows: [
+                ['1', 'OTP screen', 'No way to go back and fix the mobile number if entered wrong.', { badge: 'High', tone: 'high' }],
+                ['2', 'Device-log screen', 'No skip option; the only CTA enables device logging, so consent feels coerced.', { badge: 'High', tone: 'high' }],
+                ['3', 'Home (both paths)', '“Create ID credential” is ambiguous; users do not know it is a prerequisite.', { badge: 'High', tone: 'high' }],
+                ['4', 'Blocking popup', 'Blocked from adding a boarding pass with no hint a credential was needed first.', { badge: 'High', tone: 'high' }],
+                ['5', 'Post credential', 'No success confirmation after credential creation; no feedback anything saved.', { badge: 'High', tone: 'high' }],
+                ['6', 'Post pass upload', 'No success confirmation after boarding-pass upload; user does not know what is next.', { badge: 'High', tone: 'high' }],
+                ['7', 'Gate', 'No instruction on what to do at the gate; users must ask airport staff.', { badge: 'Medium', tone: 'medium' }],
+                ['8', 'Overall flow', 'Two OTPs and a separate PIN before the gate; very high friction for a timed task.', { badge: 'Critical', tone: 'critical' }],
+                ['9', 'Overall flow', 'No progress indicator; no sense of how many steps remain.', { badge: 'High', tone: 'high' }],
+                ['10', 'Aadhaar path', 'Aadhaar number and Virtual Aadhaar ID are never distinguished in the UI.', { badge: 'High', tone: 'high' }],
+                ['11', 'Aadhaar path', 'Feedback survey appears mid-critical-task, adding friction.', { badge: 'Medium', tone: 'medium' }],
+              ],
+            },
+            { type: 'callout', style: 'icon', label: 'What the task analysis told us', body: [
+              '**The flow is long and unguided**: two OTPs, a separate PIN, and no progress indicator to show how much is left.',
+              '**Consent feels coerced, not chosen**: the only way forward switches on device logging, with no way to decline.',
+            ] },
+          ] },
+
+          { type: 'group', gap: 16, blocks: [
+            { type: 'lensTitle', text: '4. Usability & SUS' },
+            { type: 'paragraphs', items: ['We ran the existing flow as a moderated usability test — turning the friction into a number we could beat.'] },
+            { type: 'microLabel', text: 'How we ran it' },
+            { type: 'list', items: [
+              '**5 participants**, first-time and returning flyers, thinking aloud',
+              '**One task**: onboard and reach the gate',
+              '**Measured**: time, task success, errors, and SUS',
+            ] },
+            { type: 'microLabel', text: 'The baseline numbers' },
+            { type: 'metrics', columns: 4, items: [
+              { value: '64 / 100', label: 'SUS score, below the 68 benchmark' },
+              { value: '4.5 min', label: 'Average time to onboard' },
+              { value: '100%', label: 'Task success rate' },
+              { value: '4', label: 'Errors per person, on average' },
+            ] },
+            { type: 'callout', style: 'icon', label: 'What the usability test told us', body: [
+              '**Everyone finished, no one enjoyed it**: 100% task success, but a SUS of 64, below the 68 benchmark.',
+              '**Confidence was uneven**: scores ranged from 37.5 to 90, lowest for first-time and cautious users.',
+            ] },
+          ] },
+
+          { type: 'group', gap: 16, blocks: [
+            { type: 'lensTitle', text: '5. Eye-tracking' },
+            { type: 'paragraphs', items: ['A Tobii close-up on two users, to see the hesitation the other methods could only infer.'] },
+            { type: 'microLabel', text: 'How we ran it' },
+            { type: 'list', items: [
+              '**Tobii eye-tracker**, 2 participants, an illustrative close-up',
+              '**Three screens**: consent, adding credentials, and home',
+              '**Measured**: gaze fixation time and where attention landed',
+            ] },
+            { type: 'microLabel', text: 'What we watched' },
+            { type: 'splitImage',
+              note: {
+                bare: true,
+                label: 'CLOSE-UP · 2 USERS, ILLUSTRATIVE',
+                body: 'On the existing flow, gaze fixation averaged about 339 ms and pooled on the consent and credential screens, exactly the sensitive, effortful moments where users slowed to work out what was happening.',
+                foot: '≈ 339 ms average gaze fixation · 3 min 55 sec on task',
+              },
+              src: '/digi-scan-1.png',
+              alt: 'Two participants during a Tobii eye-tracking session',
+            },
+            { type: 'callout', style: 'icon', label: 'What the close-up showed', body: [
+              '**Attention pooled where it hurts**: gaze lingered longest on the consent and credential screens, the sensitive, effortful moments.',
+              '**Read it as illustrative, not decisive**: with two participants this is a close-up, not a measured sample.',
+            ] },
+          ] },
+        ],
+      },
+      {
+        id: 'found',
+        label: 'What we found',
+        heading: [{ t: 'The same two problems, over and over' }],
+        intro: [
+          { type: 'lead', text: 'Across all five lenses, the friction collapsed into two patterns: too long to finish, and too opaque to trust.' },
+        ],
+        bodyGap: 24,
+        blocks: [
+          { type: 'microLabel', text: 'Problem 1: Too long to finish' },
+          { type: 'noteCards', columns: 3, bordered: true, items: [
+            { label: 'Structure', body: 'Ten steps just to create an ID credential, plus two OTPs and a PIN. The task analysis found 13 friction points in all.' },
+            { label: 'Effort', body: 'In testing: 4.5 minutes to finish, with 4 errors along the way.' },
+            { label: 'Voice', body: 'Interviewees called it long, repetitive, and easy to lose your place in.' },
+          ] },
+          { type: 'callout', style: 'icon', label: 'Takeaway', body: 'People did not fail the flow. They just had to work too hard to get through it.' },
+          { type: 'microLabel', text: 'Problem 2: Too opaque to trust' },
+          { type: 'noteCards', columns: 3, bordered: true, items: [
+            { label: 'Transparency', body: 'Only 1 in 4 felt the app explains how their data is used.' },
+            { label: 'Mental model', body: 'Users grasped the promise but could not say where their face data goes, how long it is kept, or who can see it.' },
+            { label: 'Timing', body: 'Worry peaked at the face scan, the most sensitive step, exactly where the app went silent.' },
+          ] },
+          { type: 'callout', style: 'icon', label: 'Takeaway', body: 'They trust the source, not the system. Government backing earns the install, but the flow never earns the data.' },
+        ],
+      },
+      {
+        id: 'personas',
+        label: 'Who we designed for',
+        heading: [{ t: 'Two personas that anchored it' }],
+        intro: [
+          { type: 'lead', text: 'The research clustered into two traveller segments, and two personas that anchored every design decision that followed.' },
+        ],
+        bodyGap: 24,
+        blocks: [
+          { type: 'pills', items: [
+            { num: '1', text: 'The Time-Pressed Shortcut Seeker' },
+            { num: '2', text: 'The Deliberate Validator' },
+          ] },
+          { type: 'personaCards', items: [
+            { name: 'Arjun Mehta', role: 'The Time-Pressed Shortcut Seeker · 34', quote: 'I just want to get through this quickly.', values: 'Values speed, low effort, and a smooth flow. Skims screens and takes the fastest path.', risk: '**The risk:** he complies without reading, so we made the safe choice the default.' },
+            { name: 'Meera Iyer', role: 'The Deliberate Validator · 57', quote: 'I need to understand this before I proceed.', values: 'Values transparency, control, and reassurance. Reads carefully and questions each step.', risk: '**The risk:** she hesitates when things are unclear, so she exposes the trust gap most sharply.' },
+          ] },
+        ],
+      },
+      {
+        id: 'plan',
+        label: 'The plan',
+        heading: [{ t: 'Two problems, two bets' }],
+        intro: [
+          { type: 'lead', text: 'Two problems meant two bets: cut the complexity, then earn the trust. We took them in that order, because a shorter flow leaves less room for doubt to creep in.' },
+        ],
+        bodyGap: 24,
+        blocks: [
+          { type: 'noteCards', columns: 2, items: [
+            { label: 'BET 1 · COMPLEXITY', title: 'Cut it down to what matters', body: 'Strip the steps that exist for the system, not the user, so the flow is short enough to finish in one sitting.' },
+            { label: 'BET 2 · TRUST', title: 'Earn trust before asking', body: 'Explain what happens to their data and reassure at the exact moment the worry arises, not buried in a policy.' },
+          ] },
+        ],
+      },
+      {
+        id: 'bet1',
+        label: 'Bet 1 · Complexity',
+        heading: [{ t: 'Cutting it down to what matters' }],
+        intro: [
+          { type: 'lead', text: "“How might we cut onboarding to only the steps truly necessary for everyone?” Redundant steps, manual entry, and unclear choices made the flow feel long and easy to abandon." },
+        ],
+        bodyGap: 40,
+        blocks: [
+          { type: 'group', gap: 16, blocks: [
+            { type: 'microLabel', text: 'Cutting the identity flow: 10 steps to 5' },
+            { type: 'paragraphs', items: ["Adding an identity credential meant ten steps and three auth factors. We kept SSO for compliance but replaced the jarring third-party bounce with a clear handoff, and deep-linked users who already have DigiLocker straight past three redundant steps."] },
+            { type: 'variants', columns: 1, items: [
+              { label: 'BEFORE · CURRENT FLOW', name: '10 steps · 3 auth factors', flow: true, screens: [
+                { src: '/digi-identity-b1.png', caption: 'Adding Credential options' },
+                { src: '/digi-identity-b2.png', caption: 'User Consent' },
+                { src: '/digi-identity-b3.png', caption: 'Aadhaar & Captcha Entry' },
+                { src: '/digi-identity-b4.png', caption: 'OTP Verification' },
+                { src: '/digi-identity-b5.png', caption: 'Digilocker Security PIN' },
+              ], points: ['Credential options, consent, Aadhaar, captcha, OTP, DigiLocker PIN', 'A sudden bounce to a third-party app breaks trust mid-flow'] },
+              { label: 'AFTER · PROPOSED FLOW', name: '5 steps · 1 auth factor', accent: true, flow: true, screens: [
+                { src: '/digi-identity-a1.png', caption: 'Adding Credential options' },
+                { src: '/digi-identity-a2.png', caption: 'User Consent + Info about getting redirected' },
+                { src: '/digi-identity-a3.png', caption: 'Security PIN' },
+              ], points: ['Credential options, consent with redirect notice, security PIN', 'Deep link skips 3 redundant steps; edge cases fall back to the full flow'] },
+            ] },
+          ] },
+          { type: 'group', gap: 16, blocks: [
+            { type: 'microLabel', text: 'Your number, detected automatically' },
+            { type: 'paragraphs', items: ['Typing a ten-digit number is slow and error-prone. We read it from the SIM instead, with manual entry still one tap away.'] },
+            { type: 'variants', columns: 2, items: [
+              { label: 'BEFORE · MANUAL ENTRY', name: 'Type +91 and 10 digits', image: '/digi-number-before.png', points: ['Typos and keyboard struggle cause failed logins', 'One more thing to get right before you even start'] },
+              { label: 'AFTER · SIM AUTO-DETECT', name: 'Pick a detected number', image: '/digi-number-after.png', accent: true, points: ['Reads the SIMs on the device, so users just pick one', 'Manual entry stays available for edge cases'] },
+            ] },
+          ] },
+          { type: 'group', gap: 16, blocks: [
+            { type: 'microLabel', text: 'Making the identity choice obvious' },
+            { type: 'paragraphs', items: ['Two unlabelled options forced users to guess, a common stall point. We added a recommendation and plain-language guidance.'] },
+            { type: 'variants', columns: 2, items: [
+              { label: 'BEFORE · NO GUIDANCE', name: 'Two bare options', image: '/digi-choice-before.png', points: ['No hint which path applies, so users hesitate', 'Picking the wrong one means backtracking later'] },
+              { label: 'AFTER · GUIDED CHOICE', name: 'A recommended path', image: '/digi-choice-after.png', accent: true, points: ['A “Recommended” tag points to the easiest path', 'Plain hints: best if you already use DigiLocker, or have Aadhaar handy'] },
+            ] },
+          ] },
+        ],
+      },
+      {
+        id: 'bet2',
+        label: 'Bet 2 · Trust',
+        heading: [{ t: 'Earning trust before asking' }],
+        intro: [
+          { type: 'lead', text: "“How might we help hesitant, first-time travellers feel safe sharing their ID and data?” So we built reassurance into the moments the worry actually arises." },
+        ],
+        bodyGap: 40,
+        blocks: [
+          { type: 'group', gap: 16, blocks: [
+            { type: 'microLabel', text: 'A warm welcome before we ask for anything' },
+            { type: 'paragraphs', items: ['Users were dropped straight into a login asking for their number. We added three swipeable intro screens that explain what DigiYatra is, show real traveller reviews as social proof, and signal that it is safe and government-backed.'] },
+            { type: 'variants', columns: 2, template: '1fr 2.6fr', items: [
+              { label: 'BEFORE · COLD START', name: '“Enter your number.”', image: '/digi-intro-before.png', points: ['No explanation of what DigiYatra is or who runs it', 'Asks for personal details before earning any trust'] },
+              { label: 'AFTER · 3 INTRO SCREENS', name: 'Purpose, proof, safety', accent: true, screens: [
+                { src: '/digi-intro-a1.png' },
+                { src: '/digi-intro-a2.png' },
+                { src: '/digi-intro-a3.png' },
+              ], points: ['What it is and how it speeds up airport entry', 'Reviews and government backing as social proof'] },
+            ] },
+            { type: 'callout', style: 'icon', label: 'Why it builds trust', body: 'People decide whether to trust an app in seconds — leading with purpose, proof, and government backing earns the right to ask for an ID.' },
+          ] },
+          { type: 'group', gap: 16, blocks: [
+            { type: 'microLabel', text: 'Consent you can actually understand' },
+            { type: 'paragraphs', items: ['The credential consent screen was a wall of legal jargon. We rewrote it so people know exactly what they are agreeing to, and that they stay in control.'] },
+            { type: 'variants', columns: 2, items: [
+              { label: 'BEFORE · LEGAL WALL', name: 'A block of jargon', image: '/digi-consent-before.png', points: ['What is stored and where is buried in long paragraphs', 'People tap Agree without knowing what they agreed to'] },
+              { label: 'AFTER · CLEAR & DIGESTIBLE', name: 'Plain points', image: '/digi-consent-after.png', accent: true, points: ['What we use, why, and where it stays', '“Kept on your phone, never our servers. Delete anytime.”'] },
+            ] },
+            { type: 'callout', style: 'icon', label: 'Why it builds trust', body: 'Informed consent is real consent: when people understand what they share and see they stay in control, they agree with confidence, not anxiety.' },
+          ] },
+          { type: 'group', gap: 16, blocks: [
+            { type: 'microLabel', text: 'Reassurance right before the face scan' },
+            { type: 'paragraphs', items: ['The face scan is the most sensitive moment. We added clear how-to guidance and a nudge explaining exactly where the photo goes, at the moment the worry actually arises.'] },
+            { type: 'variants', columns: 2, items: [
+              { label: 'BEFORE · NO REASSURANCE', name: '“Scan your face.”', image: '/digi-facescan-before.png', points: ['Asks for a face scan with no explanation of why', 'The unspoken worry: where does my photo go?'] },
+              { label: 'AFTER · GUIDED + REASSURED', name: 'How-to + privacy nudge', image: '/digi-facescan-after.png', accent: true, points: ['Simple steps for a good scan: lighting, hold steady', '“Your photo stays on your phone, never uploaded.”'] },
+            ] },
+            { type: 'callout', style: 'icon', label: 'Why it builds trust', body: 'Biometrics are the scariest thing to hand over. Reassuring where it goes in context — not in a policy — turns the most anxious step into a confident one.' },
+          ] },
+        ],
+      },
+      {
+        id: 'results',
+        label: 'Results',
+        heading: [{ t: 'What the redesign moved' }],
+        intro: [
+          { type: 'lead', text: 'We ran the redesigned flow through the same usability test and eye-tracking setup, with the same task and the same kind of participants. Here is what moved.' },
+        ],
+        bodyGap: 24,
+        blocks: [
+          { type: 'microLabel', text: 'Usability: before vs after' },
+          { type: 'metrics', columns: 3, items: [
+            { value: '4.5m → ==1.07m==', label: 'Average onboarding time' },
+            { value: '64 → ==86==', label: 'SUS score, below-average to excellent' },
+            { value: '100% → 100%', label: 'Task success rate, unchanged' },
+          ] },
+          { type: 'callout', style: 'stat', title: 'Same 100% success, far less effort.', body: 'Onboarding dropped from 4.5 to 1.07 minutes and SUS jumped from below-average to excellent. The redesign removed effort, not failure.' },
+          { type: 'microLabel', text: 'Eye-tracking: decision time & cognitive load' },
+          { type: 'table',
+            head: ['', 'Gaze · before', 'Time · before', 'Gaze · after', 'Time · after'],
+            rows: [
+              ['Average', '339 ms', '3:55', '==219 ms==', '==1:04=='],
+              ['P1', '434 ms', '4:35', '==367 ms==', '==1:23=='],
+              ['P2', '244 ms', '3:16', '==71 ms==', '==0:45=='],
+            ],
+          },
+          { type: 'list', items: [
+            '**Lower cognitive load**: shorter gaze fixation and faster decisions on the redesigned task.',
+            '**Less visual search**: users found the target information far more quickly.',
+          ] },
+        ],
+      },
+      {
+        id: 'takeaways',
+        label: 'Takeaways',
+        heading: [{ t: 'Four lessons we are taking forward' }],
+        intro: [
+          { type: 'lead', text: 'Four principles that carry to any high-stakes onboarding where effort and trust are both on the line.' },
+        ],
+        bodyGap: 24,
+        blocks: [
+          { type: 'noteCards', columns: 2, numStyle: 'big', items: [
+            { num: '01', title: 'Reassure in context, not in a policy', body: 'Trust is won at the exact moment the worry appears, on the screen that triggers it, not in a document nobody opens.' },
+            { num: '02', title: 'Cut steps that serve the system, not the user', body: 'Every screen that exists for compliance or logging is a place to hesitate or quit. Keep only what the traveller actually needs.' },
+            { num: '03', title: 'Confirm every state', body: 'People need to know what just happened and what comes next. Silence after an action reads as failure, even when it worked.' },
+            { num: '04', title: 'Design for the least confident user in the queue', body: 'Make the safe, clear path the default. When the most hesitant person can finish, everyone else moves faster too.' },
+          ] },
+        ],
+      },
+      {
+        id: 'whatsnext',
+        label: "What’s next",
+        heading: [{ t: 'Limits, and what comes next' }],
+        noDivider: true,
+        intro: [
+          { type: 'lead', text: 'An honest look at what this study could not do, and where the work goes from here.' },
+        ],
+        bodyGap: 24,
+        blocks: [
+          { type: 'microLabel', text: 'Honest limits' },
+          { type: 'list', items: [
+            '**Not fully real-world**: tasks were simulated on a prototype, not in live, time-pressured airport conditions.',
+            '**Time-boxed**: a tight one-week timeline limited the number of test rounds and iterations.',
+            '**Few older users**: we could not recruit as many 60-plus, first-time travellers as we wanted, the group that struggles most.',
+            '**Small sample**: n=5 makes the findings indicative and directional, not statistically generalisable.',
+          ] },
+          { type: 'microLabel', text: 'Where it goes next' },
+          { type: 'list', items: [
+            '**Simple Mode and deeper accessibility**: an easier experience that auto-suggests itself when someone struggles — larger type, one step per screen, and read-aloud — taken further with voice navigation and regional-language audio.',
+            '**An in-app AI assistant**: answers questions and guides users step by step, in plain language, in real time.',
+            '**Human assistance**: a “talk to a person” path, plus a “help a family member” flow for anyone who cannot self-serve.',
+          ] },
+          { type: 'callout', style: 'stat', title: 'Leaving should be as easy as arriving.', body: 'For identity infrastructure meant for everyone, onboarding has to work for the least confident user in the queue, not just the most.' },
+        ],
+      },
+    ],
+  },
   /* — v1 UV case study (replaced by uv-index-v2) —
   {
     slug: 'uv-index',

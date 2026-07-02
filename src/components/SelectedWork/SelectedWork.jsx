@@ -76,7 +76,12 @@ function WorkCard({ project }) {
       {project.readTime && (
         <div
           className={`${styles.cursorPill} ${hovered ? styles.cursorPillVisible : ''}`}
-          style={{ '--cx': `${pos.x}px`, '--cy': `${pos.y}px`, '--pill-bg': project.readTimeGradient || 'linear-gradient(180deg, #6E5DF6, #C68DF6)' }}
+          style={{
+            '--cx': `${pos.x}px`,
+            '--cy': `${pos.y}px`,
+            '--pill-bg': project.readTimeGradient || 'linear-gradient(180deg, #6E5DF6, #C68DF6)',
+            '--pill-accent': project.accent || '#6E5DF6',
+          }}
         >
           {project.readTime} Read
         </div>
